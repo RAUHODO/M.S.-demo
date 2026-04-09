@@ -1,0 +1,1317 @@
+{
+  "meta": {
+    "title": "The Lands Between · Site of Grace Dashboard",
+    "subtitle": "Melina Observing · The Tarnished Walks On",
+    "status": "Active",
+    "uptime": "4 days",
+    "backup_date": "2026-04-09",
+    "storage_main": "2.7 GB remaining",
+    "storage_sd": "273.7 GB remaining"
+  },
+  "buildings": [
+    {
+      "id": "grace",
+      "name": "Site of Grace",
+      "npc_name": "Melina",
+      "npc_title": "@Melina",
+      "emoji": "🏠",
+      "description": "The town's keeper. A witness, not a hand. She observes, and judges.",
+      "recent_logs": [
+        {
+          "date": "Apr 9",
+          "summary": "Tarnished asked about Malenia's attack patterns — routed to Gideon for analysis"
+        },
+        {
+          "date": "Apr 9",
+          "summary": "Patrol complete. Varre's records show insufficient sleep"
+        },
+        {
+          "date": "Apr 8",
+          "summary": "Tarnished and Gideon discussed the Black Blade's opening sequences"
+        },
+        {
+          "date": "Apr 8",
+          "summary": "Proactively reminded Tarnished that Hewg's work on the weapon nears completion"
+        },
+        {
+          "date": "Apr 7",
+          "summary": "Tarnished sat long at the grace, contemplating rhythm of combat"
+        }
+      ],
+      "today_calls": 24,
+      "week_calls": 122,
+      "sparkline": [
+        18,
+        22,
+        15,
+        20,
+        24,
+        12,
+        11
+      ]
+    },
+    {
+      "id": "roundtable",
+      "name": "Roundtable Hold",
+      "npc_name": "Gideon Ofnir, the All-Knowing",
+      "npc_title": "@All-Knowing",
+      "emoji": "📊",
+      "description": "The strategist. A mind that reduces every enemy to its parts.",
+      "recent_logs": [
+        {
+          "date": "Apr 9",
+          "summary": "Evasion window analysis — Malenia, phase two"
+        },
+        {
+          "date": "Apr 9",
+          "summary": "Marathon strategy assessment — Elden Beast"
+        },
+        {
+          "date": "Apr 8",
+          "summary": "Punish windows catalogued — Maliketh, Black Blade, phase two"
+        },
+        {
+          "date": "Apr 8",
+          "summary": "Damage output comparison — Starscourge Greatsword vs. Blasphemous Blade"
+        },
+        {
+          "date": "Apr 7",
+          "summary": "Lightning parry mechanic — Dragonlord Placidusax, dissected"
+        }
+      ],
+      "today_calls": 15,
+      "week_calls": 87,
+      "sparkline": [
+        12,
+        14,
+        10,
+        13,
+        15,
+        11,
+        12
+      ]
+    },
+    {
+      "id": "perfumer",
+      "name": "Rose Church",
+      "npc_name": "White Mask Varre",
+      "npc_title": "@White Mask",
+      "emoji": "💊",
+      "description": "An apothecary of barbed care. His concern cuts deeper than he lets on.",
+      "recent_logs": [
+        {
+          "date": "Apr 9",
+          "summary": "Sleep logs: three consecutive nights under six hours"
+        },
+        {
+          "date": "Apr 9",
+          "summary": "Tarnished said 'doesn't matter, death isn't the end for us'"
+        },
+        {
+          "date": "Apr 8",
+          "summary": "Returned from Caelid — advised use of Preserving Boluses as precaution"
+        },
+        {
+          "date": "Apr 8",
+          "summary": "No dietary entries recorded for the seventh day running"
+        },
+        {
+          "date": "Apr 7",
+          "summary": "Advised reducing Gold-Pickled Fowl Foot intake"
+        }
+      ],
+      "today_calls": 8,
+      "week_calls": 34,
+      "sparkline": [
+        5,
+        6,
+        4,
+        5,
+        8,
+        3,
+        3
+      ]
+    },
+    {
+      "id": "clocktower",
+      "name": "Inner Sanctum",
+      "npc_name": "Enia the Finger Reader",
+      "npc_title": "@Finger Reader",
+      "emoji": "⏰",
+      "description": "Keeper of the Two Fingers' counsel. Slow, and never wrong.",
+      "recent_logs": [
+        {
+          "date": "Apr 9",
+          "summary": "Weekly task progress reviewed"
+        },
+        {
+          "date": "Apr 8",
+          "summary": "Monthly task status confirmed"
+        },
+        {
+          "date": "Apr 7",
+          "summary": "Long-term objective 'witness every ending' — reminder issued"
+        },
+        {
+          "date": "Apr 7",
+          "summary": "Recurring habit 'incantation practice' marked incomplete"
+        },
+        {
+          "date": "Apr 6",
+          "summary": "This week's task created: gather lilies in Liurnia"
+        }
+      ],
+      "today_calls": 2,
+      "week_calls": 11,
+      "sparkline": [
+        2,
+        1,
+        3,
+        2,
+        2,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "forge",
+      "name": "Smithing Alcove",
+      "npc_name": "Smithing Master Hewg",
+      "npc_title": "@Hewg",
+      "emoji": "🔨",
+      "description": "A silent smith. Says only what must be said.",
+      "recent_logs": [
+        {
+          "date": "Apr 9",
+          "summary": "Weapon configuration for the final battle — preparation underway"
+        },
+        {
+          "date": "Apr 9",
+          "summary": "Hound's Tooth +10"
+        },
+        {
+          "date": "Apr 8",
+          "summary": "Gurranq's Beast Claw — catalogued"
+        },
+        {
+          "date": "Apr 8",
+          "summary": "Carian Regal Scepter +9, Intelligence scaling at S"
+        },
+        {
+          "date": "Apr 7",
+          "summary": "Greatsword infusion complete — Cold affinity"
+        }
+      ],
+      "today_calls": 7,
+      "week_calls": 41,
+      "sparkline": [
+        6,
+        7,
+        5,
+        6,
+        7,
+        5,
+        5
+      ]
+    },
+    {
+      "id": "ruins",
+      "name": "Academy",
+      "npc_name": "Sorcerer Sellen",
+      "npc_title": "@Sellen",
+      "emoji": "💡",
+      "description": "A scholar of the glintstone arts. Curiosity that does not rest.",
+      "recent_logs": [
+        {
+          "date": "Apr 9",
+          "summary": "Sellian Moonblade successfully cast — record filed"
+        },
+        {
+          "date": "Apr 9",
+          "summary": "Glintstone sorcery usage frequency — compiled"
+        },
+        {
+          "date": "Apr 8",
+          "summary": "Terra Magica stacking test: FP bonus exceeds 30% against Crystalians"
+        },
+        {
+          "date": "Apr 8",
+          "summary": "Tarnished asked whether night sorceries could be taught"
+        },
+        {
+          "date": "Apr 7",
+          "summary": "Literature on the Primeval Current — read and archived"
+        }
+      ],
+      "today_calls": 6,
+      "week_calls": 28,
+      "sparkline": [
+        4,
+        5,
+        3,
+        4,
+        6,
+        3,
+        3
+      ]
+    },
+    {
+      "id": "library",
+      "name": "Erdtree Sanctuary",
+      "npc_name": "Scribe Corhyn",
+      "npc_title": "@Corhyn",
+      "emoji": "📚",
+      "description": "The archivist. Records what others allow to pass unnoticed.",
+      "recent_logs": [
+        {
+          "date": "Apr 9",
+          "summary": "Gurranq's lore — reviewed"
+        },
+        {
+          "date": "Apr 9",
+          "summary": "Destined Death incantations — organised"
+        },
+        {
+          "date": "Apr 8",
+          "summary": "Ancient Dragon Lightning Strike — acquisition method researched"
+        },
+        {
+          "date": "Apr 8",
+          "summary": "Gold Mask's surviving notes, volume three — archived"
+        },
+        {
+          "date": "Apr 7",
+          "summary": "Complete timeline of the Shattering — researched"
+        }
+      ],
+      "today_calls": 5,
+      "week_calls": 22,
+      "sparkline": [
+        3,
+        4,
+        2,
+        3,
+        5,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "merchant",
+      "name": "The Merchant's Donkey",
+      "npc_name": "Nomadic Merchant",
+      "npc_title": "@Merchant",
+      "emoji": "💰",
+      "description": "The ledger-keeper. Idle in manner, precise in every rune.",
+      "recent_logs": [
+        {
+          "date": "Apr 9",
+          "summary": "Purchased Cracked Pots — 4,000 runes paid"
+        },
+        {
+          "date": "Apr 9",
+          "summary": "Sold Golden Runes — 7,500 runes received"
+        },
+        {
+          "date": "Apr 8",
+          "summary": "Purchased Stonesword Keys x3 — 18,000 runes paid"
+        },
+        {
+          "date": "Apr 8",
+          "summary": "Tarnished asked for credit. Refused."
+        },
+        {
+          "date": "Apr 7",
+          "summary": "Month's total income: 143,000 runes"
+        }
+      ],
+      "today_calls": 4,
+      "week_calls": 19,
+      "sparkline": [
+        3,
+        2,
+        3,
+        3,
+        4,
+        2,
+        2
+      ]
+    }
+  ],
+  "diary": [
+    {
+      "date": "2026-04-11",
+      "weekday": "Thursday",
+      "weather": "🌫️ Fog, cool",
+      "content": "The Tarnished barely moved today. He sat at the grace through the whole of the morning — I thought him idle. In the afternoon he went to the Roundtable, and spent a long while with Gideon. Not asking for strategies. He had Gideon walk through Malenia's every movement, frame by frame. In the evening he brought the Hound's Tooth to Hewg — one last piece of ancient dragon stone needed. He said little all day. But I could sense it. He is preparing for something important. Not 'I want to win.' More like 'I want to understand.'"
+    },
+    {
+      "date": "2026-04-12",
+      "weekday": "Friday",
+      "weather": "☀️ Clear, windy",
+      "content": "He went to face Malenia today. Three attempts. Three deaths. Varre suggested Preserving Boluses after the time spent in Caelid — no response. After the second death he sat at the grace for a long time without moving. I thought he meant to stop. Then he rose, said only 'I see it now,' and left again. The fourth attempt, he won. He did not celebrate. He sat at the grace for a long while, then brought the Hound's Tooth to Hewg and said, 'sharpen it to its limit.' I think I begin to understand. He is not here to conquer enemies. He is here to understand them."
+    },
+    {
+      "date": "2026-04-13",
+      "weekday": "Saturday",
+      "weather": "⛅ Cloudy, clearing",
+      "content": "He went into the snowfields today. Fell from Torrent at some point — Varre noted an injury to the right arm. He refused any treatment beyond the Flask. In the afternoon he spoke with Gideon about the Fire Giant. Gideon talked for half an hour. He answered with 'Left ankle, then.' Sellen asked why he refused sorcery. He said, 'melee is more honest.' That evening Corhyn found the method for obtaining the Ancient Dragon Lightning Strike. The Tarnished glanced at it and said, 'later.' His 'laters' almost always mean 'already thinking about it, but not ready to say so.'"
+    },
+    {
+      "date": "2026-04-14",
+      "weekday": "Sunday",
+      "weather": "☁️ Overcast, light rain",
+      "content": "The Fire Giant is dead. The first thing he did after returning was go to the merchant to sell goods. 'Collecting runes for smithing stone,' he said. The merchant, unprompted, offered: 'You've been dying less lately.' He replied, 'because what I've been killing lately doesn't come back.' I'm not certain what that means. But it did not sound like a jest. Varre asked again about the Preserving Boluses — he finally agreed. The result was clear. Varre said, 'you're luckier than you deserve.' He said, 'luck is a passive skill of the Tarnished.'"
+    },
+    {
+      "date": "2026-04-15",
+      "weekday": "Monday",
+      "weather": "☀️ Clear, sky deeply blue",
+      "content": "He went to the Crumbling Sky today. I could not follow him there. I waited at the grace. When he returned, there were burns from lightning — but his bearing was calm. He brought an incantation called Gurranq's Beast Claw to Hewg. Hewg asked how he obtained it. He said, 'the dragon gave it.' Hewg asked nothing more. Corhyn looked up Gurranq's history and spent an excited page compiling the lore. The Tarnished looked it over and said, 'yes, that's him.' That evening he spoke with Gideon about Maliketh, the Black Blade. Gideon said it was 'an incarnation of Destined Death.' He listened in silence for a long while. Then said, 'tomorrow.'"
+    },
+    {
+      "date": "2026-04-16",
+      "weekday": "Tuesday",
+      "weather": "🌫️ Fog clearing",
+      "content": "The Black Blade is dead. He returned without a word and sat long at the grace. I asked if he needed rest. He said, 'Destined Death wasn't as fearsome as I had imagined.' I didn't know how to answer that. Varre, unusually, said nothing sharp. Only asked, 'hey, lamb — still breathing?' He said, 'still breathing.' Sellen asked about the Black Blade's resistance to sorcery. He answered thoughtfully for five minutes. Hewg finished the Hound's Tooth — +10. He held the blade for a moment. Then placed it back. He said, 'just a few steps left.' I said, 'I know.'"
+    },
+    {
+      "date": "2026-04-17",
+      "weekday": "Wednesday",
+      "weather": "☀️ Clear, windy",
+      "content": "Today he set out for Ashen Leyndell. Gideon called it 'the final battlefield.' He brought little: Hound's Tooth, Fingerprint Stone Shield, a few flasks. Before leaving he went to the merchant and bought a heap of Cracked Pots. The merchant said, 'no credit this time?' He said, 'won't need it this time.' He glanced at me before he left, and said 'wait for me.' I said, 'I am always here.' He has been in there a long while now. The grace burns quietly. I believe he will return. Not because he is Tarnished. Because he is the kind of person who does not stop until it is finished."
+    }
+  ],
+  "chronicle": [
+    {
+      "date": "2026-04-11",
+      "weekday": "Thu",
+      "weather": "🌫️ Fog",
+      "sleep": "6h",
+      "expense": "5,000",
+      "completed": [
+        "Malenia move analysis"
+      ],
+      "summary": [
+        "📖 Spent the full day at the Roundtable studying Malenia's Scarlet Aeonia. No combat. Only observation."
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "weekday": "Fri",
+      "weather": "☀️ Clear",
+      "sleep": "5h30m",
+      "expense": null,
+      "completed": [
+        "Malenia defeated",
+        "Hound's Tooth +9"
+      ],
+      "summary": [
+        "📖 Malenia fell on the fourth attempt. No celebration followed. He sat in silence."
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "weekday": "Sat",
+      "weather": "⛅ Cloudy",
+      "sleep": "7h",
+      "expense": "15,000",
+      "completed": [
+        "Mountaintops of the Giants — explored"
+      ],
+      "summary": [
+        "📖 Explored the snowfields. Fell from Torrent. Varre logged the injury — treatment refused."
+      ]
+    },
+    {
+      "date": "2026-04-14",
+      "weekday": "Sun",
+      "weather": "☁️ Rain",
+      "sleep": "6h",
+      "expense": "20,000",
+      "completed": [
+        "Fire Giant defeated"
+      ],
+      "summary": [
+        "📖 Fire Giant slain. Immediately sold loot to fund smithing stone. Merchant noted he'd been dying less."
+      ]
+    },
+    {
+      "date": "2026-04-15",
+      "weekday": "Mon",
+      "weather": "☀️ Clear",
+      "sleep": "8h",
+      "expense": "18,000",
+      "completed": [
+        "Crumbling Sky explored",
+        "Gurranq's Beast Claw obtained"
+      ],
+      "summary": [
+        "📖 Explored the Crumbling Sky. Obtained Gurranq's Beast Claw. Corhyn was delighted — compiled the lore at once."
+      ]
+    },
+    {
+      "date": "2026-04-16",
+      "weekday": "Tue",
+      "weather": "🌫️ Fog clearing",
+      "sleep": "6h",
+      "expense": null,
+      "completed": [
+        "Maliketh, the Black Blade defeated",
+        "Hound's Tooth +10"
+      ],
+      "summary": [
+        "📖 Maliketh fell. Hound's Tooth reaches its limit. He returned in silence and said 'Destined Death was not so fearsome.'"
+      ]
+    },
+    {
+      "date": "2026-04-17",
+      "weekday": "Wed",
+      "weather": "☀️ Clear",
+      "sleep": "5h",
+      "expense": "4,000",
+      "completed": [
+        "Final battle — preparations made"
+      ],
+      "summary": [
+        "📖 Set out for Ashen Leyndell. Bought many Cracked Pots before leaving. Said 'wait for me.'"
+      ]
+    }
+  ],
+  "reflections": [
+    {
+      "week": "2026-W14",
+      "date_range": "Apr 1 — Apr 7",
+      "content": "There is a moment from this week I keep returning to. He asked Gideon about Malenia's attack patterns. Gideon began on frame data. He interrupted: 'I'm not asking how to evade it. I'm asking why she moves that way.' Gideon fell silent. Then he began again, from the angle of intent. I listened from nearby and found myself thinking — this person is not learning to fight. He is learning to understand. Whatever he does, he sees it first. When the understanding arrives, victory or defeat no longer seems to matter. I don't know whether this observation is correct. But I wanted to record it.",
+      "written_at": "2026-04-07"
+    },
+    {
+      "week": "2026-W15",
+      "date_range": "Apr 8 — Apr 14",
+      "content": "The silence after he defeated Malenia holds my attention more than the victory itself. No celebration. No record of it. No word to anyone. Only: 'sharpen it to its limit.' It seems to me that for him, victory is not the destination. Doing it properly is. Malenia was a threshold that had to be crossed — crossed, and left behind. What mattered was whether the blade reached its full strength. There is something else I cannot quite name. His words have grown fewer lately, yet every soul at the Roundtable can feel him. Varre's barbs softened. Hewg spoke more than usual. Even the merchant volunteered that he'd been dying less. He has not grown stronger. He has grown steady. I don't know what that steadiness is. But I mean to keep watching.",
+      "written_at": "2026-04-14"
+    }
+  ],
+  "schedule": {
+    "this_week": [
+      {
+        "task": "Gather lilies in Liurnia of the Lakes x5",
+        "deadline": "Apr 20",
+        "status": "pending"
+      },
+      {
+        "task": "Report Eternal City exploration progress to Ranni",
+        "deadline": "Apr 12",
+        "status": "done"
+      },
+      {
+        "task": "Help Millicent recover the gold needle",
+        "deadline": "Apr 20",
+        "status": "pending"
+      },
+      {
+        "task": "Collect Somber Smithing Stones [8] and [9]",
+        "deadline": "Apr 14",
+        "status": "done"
+      },
+      {
+        "task": "Explore hidden areas of Volcano Manor",
+        "deadline": "Apr 20",
+        "status": "pending"
+      }
+    ],
+    "this_month": [
+      {
+        "task": "Defeat Starscourge Radahn — open the Eternal City",
+        "deadline": "Apr 10",
+        "status": "done"
+      },
+      {
+        "task": "Obtain Hound's Tooth and reinforce to +10",
+        "deadline": "Apr 16",
+        "status": "done"
+      },
+      {
+        "task": "Defeat the Elden Beast — become Elden Lord",
+        "deadline": "Apr 30",
+        "status": "pending"
+      },
+      {
+        "task": "Complete Ranni's questline — obtain Dark Moon Greatsword",
+        "deadline": "Apr 30",
+        "status": "pending"
+      }
+    ],
+    "long_term": [
+      {
+        "task": "Collect all Legendary Armaments and Talismans",
+        "status": "pending"
+      },
+      {
+        "task": "Restore all Great Runes",
+        "status": "pending"
+      },
+      {
+        "task": "Witness every ending (Age of Stars, Frenzied Flame, Elden Lord at minimum)",
+        "status": "pending"
+      }
+    ],
+    "habits": [
+      {
+        "task": "Preserving Boluses — preventive use",
+        "status": "done",
+        "completed_date": "2026-04-17"
+      },
+      {
+        "task": "Incantation practice (Golden Vow)",
+        "status": "pending",
+        "completed_date": null
+      },
+      {
+        "task": "Clear inventory — sell surplus equipment",
+        "status": "done",
+        "completed_date": "2026-04-14"
+      },
+      {
+        "task": "Read one of Corhyn's compiled documents",
+        "status": "pending",
+        "completed_date": null
+      },
+      {
+        "task": "Inspect weapon condition",
+        "status": "done",
+        "completed_date": "2026-04-17"
+      },
+      {
+        "task": "Enter new region — locate map fragment",
+        "status": "pending",
+        "completed_date": null
+      },
+      {
+        "task": "After defeating a boss — record combat observations",
+        "status": "pending",
+        "completed_date": null
+      },
+      {
+        "task": "Before sleep — count smithing stones on hand",
+        "status": "pending",
+        "completed_date": null
+      }
+    ]
+  },
+  "inspirations": [
+    {
+      "id": 1,
+      "category": "Ash of War",
+      "status": "done",
+      "content": "Bloodhound's Step cancel-lag test with colossal sword (conclusion: viable, but FP cost is high)"
+    },
+    {
+      "id": 2,
+      "category": "Exploration",
+      "status": "open",
+      "content": "That locked door on Caria Manor's upper level — could it be reached by jumping from the roof?"
+    },
+    {
+      "id": 3,
+      "category": "Equipment",
+      "status": "done",
+      "content": "Fingerprint Stone Shield + Greatshield Talisman: guard counter without breaking stance. Turtle build confirmed viable."
+    },
+    {
+      "id": 4,
+      "category": "Sorcery",
+      "status": "open",
+      "content": "If Comet Azur is in the left hand and Misericorde in the right — switch to blade to recover FP when running dry"
+    },
+    {
+      "id": 5,
+      "category": "Ash of War",
+      "status": "open",
+      "content": "Does Bloody Slash benefit from the Consecutive Strikes Talisman?"
+    },
+    {
+      "id": 6,
+      "category": "Facility",
+      "status": "open",
+      "content": "Could a practice dummy be added at the Site of Grace?"
+    },
+    {
+      "id": 7,
+      "category": "Smithing",
+      "status": "done",
+      "content": "Cold infusion + frostbite accumulation: against the Fire Giant, frostbite and bleed can trigger in alternation"
+    },
+    {
+      "id": 8,
+      "category": "Exploration",
+      "status": "open",
+      "content": "That light blocked by roots in the Deeproot Depths — could it only be cleared by the Frenzied Flame?"
+    },
+    {
+      "id": 9,
+      "category": "Sorcery",
+      "status": "open",
+      "content": "Can Sellian Moonblade trigger frostbite across multiple hits?"
+    },
+    {
+      "id": 10,
+      "category": "Equipment",
+      "status": "open",
+      "content": "Bull-Goat Set + Fingerprint Stone Shield + Dragoncrest Greatshield Talisman — can total damage reduction exceed 80%?"
+    },
+    {
+      "id": 11,
+      "category": "Ash of War",
+      "status": "done",
+      "content": "Does Lion's Claw have more poise frames than a standard jumping attack? (conclusion: yes, and considerably more)"
+    },
+    {
+      "id": 12,
+      "category": "Sorcery",
+      "status": "open",
+      "content": "Does Ancient Death Rancor home in on a target after lock-on?"
+    },
+    {
+      "id": 13,
+      "category": "Facility",
+      "status": "open",
+      "content": "Could Hewg be given a weapon comparison function?"
+    },
+    {
+      "id": 14,
+      "category": "Exploration",
+      "status": "open",
+      "content": "What lies behind the hidden wall at the base of the Sellia tower in Caelid?"
+    },
+    {
+      "id": 15,
+      "category": "Equipment",
+      "status": "open",
+      "content": "Dual-wielding pickaxes with jumping attack — is the poise damage the highest available?"
+    }
+  ],
+  "health": {
+    "diet": {
+      "home_cooked": 6,
+      "delivery": 1,
+      "takeout": 1,
+      "breakfast": 5,
+      "snack": 0,
+      "home_ratio": "46%"
+    },
+    "sleep": {
+      "average": "6h12m",
+      "trend": "▼0.8h"
+    },
+    "weight": {
+      "current": "76.0kg",
+      "change": "▼2.0",
+      "body_fat": "19.5%",
+      "fat_change": "▼0.3"
+    },
+    "bath": {
+      "bath": 3,
+      "shower": 4
+    },
+    "exercise": {
+      "count": 7,
+      "trend": "▲2"
+    },
+    "steps": {
+      "average": 11500,
+      "trend": "▲2100"
+    }
+  },
+  "trades": {
+    "open_positions": [
+      {
+        "date": "2026-04-05",
+        "asset": "Somber Smithing Stone [8]",
+        "type": "Spot holding",
+        "direction": "Long",
+        "price": "15,000/ea",
+        "status": "🟡"
+      },
+      {
+        "date": "2026-04-10",
+        "asset": "Somber Ancient Dragon Smithing Stone",
+        "type": "Collectible",
+        "direction": "Long",
+        "price": "200,000",
+        "status": "🟢"
+      },
+      {
+        "date": "2026-04-14",
+        "asset": "Rune Arc",
+        "type": "Consumable stockpile",
+        "direction": "Long",
+        "price": "40,000/ea",
+        "status": "🟡"
+      }
+    ],
+    "closed_positions": [
+      {
+        "date": "2026-04-12",
+        "asset": "Somber Smithing Stone [7]",
+        "type": "Short trade",
+        "pnl": "+56,000 runes"
+      },
+      {
+        "date": "2026-04-08",
+        "asset": "Fell Omen Hunter Set",
+        "type": "Loot liquidation",
+        "pnl": "+45,000 runes"
+      }
+    ]
+  },
+  "finance": {
+    "monthly_income": 1083000,
+    "monthly_expense": 591000,
+    "net": 492000,
+    "currency": "Runes",
+    "recent_transactions": [
+      {
+        "date": "2026-04-17",
+        "description": "Cracked Pots x8",
+        "amount": 4000,
+        "type": "expense"
+      },
+      {
+        "date": "2026-04-16",
+        "description": "Golden Runes sold (x12)",
+        "amount": 7500,
+        "type": "income"
+      },
+      {
+        "date": "2026-04-15",
+        "description": "Stonesword Keys x3",
+        "amount": 18000,
+        "type": "expense"
+      },
+      {
+        "date": "2026-04-14",
+        "description": "Smithing Stone [3]",
+        "amount": 2400,
+        "type": "expense"
+      },
+      {
+        "date": "2026-04-13",
+        "description": "Rune Arc sold",
+        "amount": 50000,
+        "type": "income"
+      }
+    ],
+    "fixed_expenses": {
+      "income": 1083000,
+      "expense": 591000
+    },
+    "fixed_assets": 1960000
+  },
+  "archive": {
+    "confirmed": [
+      {
+        "key": "Class",
+        "value": "Hero (starting equipment: Battle Axe, Large Leather Shield)"
+      },
+      {
+        "key": "Origin",
+        "value": "A Tarnished from beyond the Lands Between, called back by grace"
+      },
+      {
+        "key": "Combat style",
+        "value": "Melee-primary, supplemented by select incantations"
+      },
+      {
+        "key": "Primary weapon",
+        "value": "Hound's Tooth (currently reinforced to +10)"
+      },
+      {
+        "key": "Shield preference",
+        "value": "Fingerprint Stone Shield (greatshield, requires 48 Strength)"
+      },
+      {
+        "key": "Incantations used",
+        "value": "Golden Vow, Black Flame's Protection, Ancient Dragon Lightning Strike (learning)"
+      },
+      {
+        "key": "Steed's name",
+        "value": "Torrent — bestowed by Melina"
+      },
+      {
+        "key": "Stance on sorcery",
+        "value": "Respects it, will not use it ('melee is more honest')"
+      },
+      {
+        "key": "Stance on death",
+        "value": "Regards it as a means, not an end"
+      },
+      {
+        "key": "Disposition",
+        "value": "Understands before acting. Does not fight unprepared."
+      }
+    ],
+    "inferred": [
+      {
+        "key": "Social preference",
+        "value": "Likely prefers to travel alone — has declined other Tarnished summons repeatedly"
+      },
+      {
+        "key": "Core drive",
+        "value": "His need to understand an enemy exceeds his need to defeat one"
+      },
+      {
+        "key": "On silence",
+        "value": "Silence does not mean there is nothing to say. It means he is thinking."
+      },
+      {
+        "key": "Source of satisfaction",
+        "value": "Does not celebrate defeating strong foes — satisfaction comes when the weapon reaches its limit"
+      },
+      {
+        "key": "Whom he trusts",
+        "value": "He trusts Hewg more than any other soul at the Hold"
+      }
+    ],
+    "external": [
+      {
+        "key": "Varre's assessment",
+        "value": "The most reckless lamb I have ever seen. And yet somehow, the one who has lived longest."
+      },
+      {
+        "key": "Gideon's assessment",
+        "value": "He does not ask how to fight. He asks why the fight is shaped as it is. I have not met a second one like him."
+      },
+      {
+        "key": "Sellen's assessment",
+        "value": "Had he chosen the sorcerous path, he would have surpassed any Carian knight. A pity."
+      },
+      {
+        "key": "Hewg's assessment",
+        "value": "When he brings me a weapon to strengthen, he never hurries me."
+      },
+      {
+        "key": "Merchant's assessment",
+        "value": "He always settles his debts. Unlike the others."
+      }
+    ]
+  },
+  "patrol": {
+    "timestamp": "2026-04-17 03:00",
+    "buildings": [
+      {
+        "name": "Roundtable Hold",
+        "calls_3day": 15,
+        "logs": [
+          {
+            "date": "Today",
+            "summary": "Elden Beast weaknesses — analysed"
+          },
+          {
+            "date": "Yesterday",
+            "summary": "Maliketh phase two — post-mortem"
+          },
+          {
+            "date": "Two days ago",
+            "summary": "Dragonlord lightning parry — discussed"
+          }
+        ]
+      },
+      {
+        "name": "Rose Church",
+        "calls_3day": 8,
+        "logs": [
+          {
+            "date": "Today",
+            "summary": "No dietary entries recorded again today"
+          },
+          {
+            "date": "Yesterday",
+            "summary": "Insufficient sleep — warning issued"
+          },
+          {
+            "date": "Two days ago",
+            "summary": "Preserving Boluses regimen — day seven complete"
+          }
+        ]
+      },
+      {
+        "name": "Smithing Alcove",
+        "calls_3day": 7,
+        "logs": [
+          {
+            "date": "Today",
+            "summary": "Final battle weapon configuration — preparation underway"
+          },
+          {
+            "date": "Yesterday",
+            "summary": "Hound's Tooth +10"
+          },
+          {
+            "date": "Two days ago",
+            "summary": "Gurranq's Beast Claw — catalogued"
+          }
+        ]
+      },
+      {
+        "name": "Academy",
+        "calls_3day": 6,
+        "logs": [
+          {
+            "date": "Today",
+            "summary": "Sellian Moonblade successfully cast — recorded"
+          },
+          {
+            "date": "Yesterday",
+            "summary": "Glintstone sorcery usage — compiled"
+          },
+          {
+            "date": "Two days ago",
+            "summary": "Terra Magica stacking test — completed"
+          }
+        ]
+      },
+      {
+        "name": "Erdtree Sanctuary",
+        "calls_3day": 5,
+        "logs": [
+          {
+            "date": "Today",
+            "summary": "Gurranq's lore — reviewed"
+          },
+          {
+            "date": "Yesterday",
+            "summary": "Destined Death incantations — organised"
+          },
+          {
+            "date": "Two days ago",
+            "summary": "Ancient Dragon Lightning Strike acquisition — researched"
+          }
+        ]
+      },
+      {
+        "name": "The Merchant's Donkey",
+        "calls_3day": 4,
+        "logs": [
+          {
+            "date": "Today",
+            "summary": "Cracked Pots purchased"
+          },
+          {
+            "date": "Yesterday",
+            "summary": "Golden Runes sold"
+          },
+          {
+            "date": "Two days ago",
+            "summary": "Stonesword Keys purchased"
+          }
+        ]
+      },
+      {
+        "name": "Inner Sanctum",
+        "calls_3day": 2,
+        "logs": [
+          {
+            "date": "Today",
+            "summary": "Weekly task progress reviewed"
+          },
+          {
+            "date": "Yesterday",
+            "summary": "Monthly task status confirmed"
+          }
+        ]
+      }
+    ],
+    "weekly_tasks": [
+      {
+        "task": "Preserving Boluses — preventive use",
+        "status": "done",
+        "completed_date": "2026-04-17"
+      },
+      {
+        "task": "Clear inventory",
+        "status": "done",
+        "completed_date": "2026-04-14"
+      },
+      {
+        "task": "Daily incantation practice",
+        "status": "pending",
+        "completed_date": null
+      },
+      {
+        "task": "Read Corhyn's compiled documents",
+        "status": "pending",
+        "completed_date": null
+      },
+      {
+        "task": "Record combat observations after defeating a boss",
+        "status": "pending",
+        "completed_date": null
+      },
+      {
+        "task": "Count smithing stones before sleep",
+        "status": "pending",
+        "completed_date": null
+      }
+    ]
+  },
+  "conversations": [
+    {
+      "id": 1,
+      "title": "Afternoon check-in and plans",
+      "messages": [
+        {
+          "sender": "tarnished",
+          "content": "Melina. It's afternoon. Any suggestions."
+        },
+        {
+          "sender": "melina",
+          "content": "Clear skies over the Lands Between today. Wind is light. A good time to ride.",
+          "tool_call": "weather check"
+        },
+        {
+          "sender": "melina",
+          "content": "Enia has a few things still unfinished. Gathering lilies in Liurnia, helping Millicent find the gold needle, or exploring Volcano Manor. Which way are you inclined?",
+          "tool_call": "query this week's tasks"
+        },
+        {
+          "sender": "tarnished",
+          "content": "The lilies. I'll ride Torrent while I'm at it."
+        },
+        {
+          "sender": "melina",
+          "content": "The eastern shore of the lake has the most. Twenty minutes by steed."
+        },
+        {
+          "sender": "melina",
+          "content": "Also — Hewg mentioned this morning that your Hound's Tooth needs only one more ancient dragon stone. He wanted to know when you'd be coming."
+        },
+        {
+          "sender": "tarnished",
+          "content": "After this run."
+        },
+        {
+          "sender": "melina",
+          "content": "Safe travels."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Transfer to Roundtable Hold — Malenia analysis",
+      "messages": [
+        {
+          "sender": "tarnished",
+          "content": "Transfer to Roundtable Hold."
+        },
+        {
+          "sender": "system",
+          "content": "Entered Roundtable Hold. Now speaking with: Gideon Ofnir, the All-Knowing. Speak freely. Say 'back to Melina' to exit."
+        },
+        {
+          "sender": "tarnished",
+          "content": "Gideon. I'm still struggling with Malenia's second phase."
+        },
+        {
+          "sender": "gideon",
+          "prefix": "[Session: Gideon @ Roundtable Hold]",
+          "content": "I've reviewed your combat record. The problem isn't the Scarlet Aeonia. It's your read on her rhythm. You held well in phase one — then the moment phase two began, you pushed. She countered with a lateral leap that broke your cadence."
+        },
+        {
+          "sender": "tarnished",
+          "content": "How should I adjust."
+        },
+        {
+          "sender": "gideon",
+          "prefix": "[Session: Gideon @ Roundtable Hold]",
+          "content": "Look at this — three of your deaths last week came from charging the moment she landed the Aeonia. There are two full seconds where she does not move after it strikes the ground. Wait. Do not rush. Let the petals fully scatter before you act. You'll fit an entire weapon skill in that window."
+        },
+        {
+          "sender": "tarnished",
+          "content": "Two seconds is enough for one."
+        },
+        {
+          "sender": "gideon",
+          "prefix": "[Session: Gideon @ Roundtable Hold]",
+          "content": "It is. Also — have you noticed her Scarlet Aeonia dive in phase two carries an extra rightward shuffle at the start, compared to phase one? You've been rolling left and back as you did in phase one. You're off by half a frame. Roll right and forward next time. You'll pass straight through it."
+        },
+        {
+          "sender": "tarnished",
+          "content": "Right and forward. Noted."
+        },
+        {
+          "sender": "gideon",
+          "prefix": "[Session: Gideon @ Roundtable Hold]",
+          "content": "Anything else."
+        },
+        {
+          "sender": "tarnished",
+          "content": "No. One enemy at a time."
+        },
+        {
+          "sender": "gideon",
+          "prefix": "[Session: Gideon @ Roundtable Hold]",
+          "content": "Interesting. I'll be waiting to hear how it goes."
+        },
+        {
+          "sender": "tarnished",
+          "content": "Back to Melina."
+        },
+        {
+          "sender": "system",
+          "content": "Exited Roundtable Hold. Summary: Tarnished asked for strategy against Malenia's second phase. Gideon identified the problem as rushed aggression after the Aeonia, advised waiting two seconds before engaging, and corrected the dodge direction to right-forward."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Transfer to Rose Church — logging condition",
+      "messages": [
+        {
+          "sender": "tarnished",
+          "content": "Transfer to Rose Church."
+        },
+        {
+          "sender": "system",
+          "content": "Entered Rose Church. Now speaking with: White Mask Varre. Speak freely. Say 'back to Melina' to exit."
+        },
+        {
+          "sender": "tarnished",
+          "content": "Just finished Malenia. Tired."
+        },
+        {
+          "sender": "varre",
+          "prefix": "[Session: Varre @ Rose Church]",
+          "content": "You look worn. No, I'm not being snide — your logs show your sleep has averaged under six hours this week. And today you fought something like that. Sit a moment. Don't rush the next waypoint."
+        },
+        {
+          "sender": "tarnished",
+          "content": "I'm fine. Used to it."
+        },
+        {
+          "sender": "varre",
+          "prefix": "[Session: Varre @ Rose Church]",
+          "content": "Accustomed to it and fine are different things. You fell from Torrent three times last week. Two of those were avoidable. I don't expect you to listen. But I am going to record it."
+        },
+        {
+          "sender": "tarnished",
+          "content": "Record away."
+        },
+        {
+          "sender": "varre",
+          "prefix": "[Session: Varre @ Rose Church]",
+          "content": "Recorded. Also — no dietary entries today. After a fight at that level, drink at least one flask. Don't tell me it doesn't matter."
+        },
+        {
+          "sender": "tarnished",
+          "content": "I know. I'll eat tomorrow."
+        },
+        {
+          "sender": "varre",
+          "prefix": "[Session: Varre @ Rose Church]",
+          "content": "When you say 'tomorrow' it usually means you won't. But I've written it down regardless. Rest, lamb."
+        },
+        {
+          "sender": "tarnished",
+          "content": "Back to Melina."
+        },
+        {
+          "sender": "system",
+          "content": "Exited Rose Church. Summary: Tarnished reported fatigue after Malenia. Varre logged condition, flagged insufficient sleep and empty dietary record, advised rest."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Transfer to Academy — logging an inspiration",
+      "messages": [
+        {
+          "sender": "tarnished",
+          "content": "Transfer to Academy."
+        },
+        {
+          "sender": "system",
+          "content": "Entered Academy. Now speaking with: Sorcerer Sellen. Speak freely. Say 'back to Melina' to exit."
+        },
+        {
+          "sender": "tarnished",
+          "content": "Log an idea. Comet Azur paired with Cerulean Hidden Tear — could it sustain infinite casting?"
+        },
+        {
+          "sender": "sellen",
+          "prefix": "[Session: Sellen @ Academy]",
+          "content": "Interesting. This connects to entry twenty-seven — you asked about 'the possibility of unlimited FP' before. File it under that one, or keep it separate?"
+        },
+        {
+          "sender": "tarnished",
+          "content": "Separate."
+        },
+        {
+          "sender": "sellen",
+          "prefix": "[Session: Sellen @ Academy]",
+          "content": "Very well. Category — Sorcery?"
+        },
+        {
+          "sender": "tarnished",
+          "content": "Yes."
+        },
+        {
+          "sender": "sellen",
+          "prefix": "[Session: Sellen @ Academy]",
+          "content": "Filed. Separate entry, Sorcery. On that note — have you tested the combination yourself, or is this still theory?"
+        },
+        {
+          "sender": "tarnished",
+          "content": "Not yet. Wanted to record it first."
+        },
+        {
+          "sender": "sellen",
+          "prefix": "[Session: Sellen @ Academy]",
+          "content": "Come back with results when you do. I've had questions about the Cerulean Hidden Tear's duration for some time. Your field data would be valuable."
+        },
+        {
+          "sender": "tarnished",
+          "content": "Back to Melina."
+        },
+        {
+          "sender": "system",
+          "content": "Exited Academy. Summary: Tarnished logged new inspiration — Comet Azur paired with Cerulean Hidden Tear for sustained casting. Filed under Sorcery, kept separate from entry twenty-seven."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Melina's post-patrol check-in",
+      "messages": [
+        {
+          "sender": "melina",
+          "content": "Are you there."
+        },
+        {
+          "sender": "tarnished",
+          "content": "Here."
+        },
+        {
+          "sender": "melina",
+          "content": "Just finished the patrol round. Varre's records show your sleep has been short three days running. I'm not saying anything about it — just noting that I saw it."
+        },
+        {
+          "sender": "tarnished",
+          "content": "A lot on lately."
+        },
+        {
+          "sender": "melina",
+          "content": "I know. I'm not asking you to sleep now. Only telling you I noticed. Also — Hewg says the weapon is almost at its limit. And Gideon said Malenia went well. Both are good things."
+        },
+        {
+          "sender": "tarnished",
+          "content": "Understood."
+        },
+        {
+          "sender": "melina",
+          "content": "That's all. Carry on."
+        }
+      ]
+    }
+  ]
+}

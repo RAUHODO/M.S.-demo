@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoSphere · Site of Grace</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="header">
+    <div class="header-left">
+      <h1 id="main-title"></h1>
+      <div class="status-bar" id="status-bar"></div>
+    </div>
+    <div class="header-right">
+      <button id="lang-toggle" class="lang-btn" onclick="toggleLang()">EN</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Conversation Demo (above buildings, collapsible) -->
+    <section id="conversation-section">
+      <div class="accordion" id="conv-accordion"></div>
+    </section>
+
+    <!-- Building Panel -->
+    <section id="buildings-section">
+      <div class="section-title" id="buildings-title"></div>
+      <div id="buildings-grid"></div>
+      <div class="building-detail" id="building-detail" style="display:none"></div>
+    </section>
+
+    <!-- Accordion Content -->
+    <section id="content-section">
+      <div class="accordion" id="accordion"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Demo with fictional data. MoSphere is a personal AI OS project.</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
