@@ -13,7 +13,7 @@ const BUILDING_COLORS = ['#4ade80','#60a5fa','#fbbf24','#fb923c','#f87171','#d97
 
 const SECTIONS = {
   cn: [
-    { icon: '📔', label: '梅琳娜日记' },
+    { icon: '📔', label: '梅梅日记' },
     { icon: '🌊', label: '凝月之地' },
     { icon: '🏛️', label: '大书库' },
     { icon: '⏰', label: '大赐福·密室' },
