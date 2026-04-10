@@ -13,35 +13,38 @@ const BUILDING_COLORS = ['#4ade80','#60a5fa','#fbbf24','#fb923c','#f87171','#d97
 
 const SECTIONS = {
   cn: [
-    { icon: '📔', label: '梅梅日记' },
-    { icon: '🌊', label: '凝月之地' },
-    { icon: '🏛️', label: '大书库' },
-    { icon: '⏰', label: '大赐福·密室' },
-    { icon: '💡', label: '魔法学院' },
-    { icon: '💊', label: '蔷薇教堂' },
-    { icon: '📊', label: '圆桌厅堂' },
-    { icon: '💰', label: '埃雷教堂' },
-    { icon: '📚', label: '黄金树大教堂' },
-    { icon: '📋', label: '巡逻报告' },
+    { icon: '📔', label: '梅梅日记',     tooltip: '梅琳娜每天凌晨写的观察日记。她眼中的褪色者，有主观判断，不是流水账。' },
+    { icon: '🌊', label: '凝月之地',     tooltip: '梅琳娜的每周直觉备忘。记录"说不清楚但有感觉的东西"——跨天看下来觉得不对劲的、有规律的观察。' },
+    { icon: '🏛️', label: '大书库',       tooltip: '每日客观数据自动聚合。天气、睡眠、消费、完成事项，零AI参与，纯数字记录。' },
+    { icon: '⏰', label: '大赐福·密室', tooltip: '褪色者的任务管理。本周待办、循环习惯、长期目标，由解指恩雅看护。' },
+    { icon: '💡', label: '魔法学院',     tooltip: '褪色者的灵感收集站。瑟濂负责分类存档，按战技、探索、装备、魔法等标签整理。' },
+    { icon: '💊', label: '蔷薇教堂',     tooltip: '褪色者的身体与状态数据。饮食、睡眠、体重、运动记录，由白面具梵雷看护。' },
+    { icon: '📊', label: '圆桌厅堂',     tooltip: '褪色者的战略分析与资产交易记录。基甸负责复盘和持仓管理。' },
+    { icon: '💰', label: '埃雷教堂',     tooltip: '褪色者的收支流水。卢恩的来源与去向，由流浪商人记账。' },
+    { icon: '📚', label: '黄金树大教堂', tooltip: '褪色者的个人档案。已确认的事实、梅琳娜的推断、其他NPC的评价，由柯林管理。' },
+    { icon: '📋', label: '巡逻报告',     tooltip: '梅琳娜定时巡查各建筑后生成的简报。包含各建筑近期动态和本周习惯任务完成情况。' },
   ],
   en: [
-    { icon: '📔', label: "Melina's Journal" },
-    { icon: '🌊', label: 'Moongazing Grounds' },
-    { icon: '🏛️', label: 'Grand Library' },
-    { icon: '⏰', label: 'Inner Sanctum' },
-    { icon: '💡', label: 'Academy' },
-    { icon: '💊', label: 'Rose Church' },
-    { icon: '📊', label: 'Roundtable Hold' },
-    { icon: '💰', label: "Church of Elleh" },
-    { icon: '📚', label: 'Erdtree Sanctuary' },
-    { icon: '📋', label: 'Patrol Report' },
+    { icon: '📔', label: "Melina's Journal",   tooltip: "Melina's daily observation journal, written each night. Her view of the Tarnished — subjective, with real opinions." },
+    { icon: '🌊', label: 'Moongazing Grounds', tooltip: "Melina's weekly intuition memo. Things she noticed across the week that feel significant but hard to explain." },
+    { icon: '🏛️', label: 'Grand Library',      tooltip: 'Daily objective data, auto-aggregated. Weather, sleep, expenses, completed tasks. Zero AI involvement, pure numbers.' },
+    { icon: '⏰', label: 'Inner Sanctum',      tooltip: "The Tarnished's task management. Weekly to-dos, recurring habits, long-term goals, maintained by Enia the Finger Reader." },
+    { icon: '💡', label: 'Academy',            tooltip: "The Tarnished's idea collection. Sellen categorizes and archives ideas by tags like combat arts, exploration, equipment, and magic." },
+    { icon: '💊', label: 'Rose Church',        tooltip: "The Tarnished's physical and behavioral data. Diet, sleep, weight, exercise records, maintained by White Mask Varré." },
+    { icon: '📊', label: 'Roundtable Hold',    tooltip: 'Strategic analysis and asset trading records. Gideon handles reviews and position management.' },
+    { icon: '💰', label: "Church of Elleh",    tooltip: "The Tarnished's financial ledger. Rune income and expenses, tracked by the Nomadic Merchant." },
+    { icon: '📚', label: 'Erdtree Sanctuary',  tooltip: "The Tarnished's personal archive. Confirmed facts, Melina's inferences, and assessments from other NPCs, managed by Brother Corhyn." },
+    { icon: '📋', label: 'Patrol Report',      tooltip: "Melina's periodic building inspection briefing. Includes recent activity from each building and weekly habit task completion status." },
   ]
 };
 
 const L = {
   cn: {
     buildings: '⚡ 建筑活跃度',
+    buildingsTooltip: '小镇各建筑最近的使用频率。数字越高说明褪色者最近常去那栋建筑。',
     conversations: '💬 示范对话',
+    conversationsTooltip: '褪色者与小镇居民的实际交流记录。可转接不同建筑与对应NPC对话。',
+    headerTooltip: '褪色者的个人中枢。梅琳娜在此观察、记录、做出判断。',
     statusRunning: '运行中',
     uptime: '运行', backup: '备份',
     today: '今日', sevenD: '7日共',
@@ -57,7 +60,10 @@ const L = {
   },
   en: {
     buildings: '⚡ Building Activity',
+    buildingsTooltip: 'Recent usage frequency of each building. Higher numbers mean the Tarnished visits that building more often.',
     conversations: '💬 Demo Conversations',
+    conversationsTooltip: 'Real exchanges between the Tarnished and town residents. You can transfer between buildings to talk to different NPCs.',
+    headerTooltip: "The Tarnished's personal hub. Melina observes, records, and makes decisions here.",
     statusRunning: 'Running',
     uptime: 'Uptime', backup: 'Backup',
     today: 'Today', sevenD: '7d total ',
@@ -72,6 +78,15 @@ const L = {
     toggleTo: '中',
   }
 };
+
+// ── Tooltip Helper ──
+function infoIcon(text) {
+  if (!text) return '';
+  return `<span class="tooltip-wrapper" onclick="event.stopPropagation()">` +
+    `<span class="info-icon">ⓘ</span>` +
+    `<span class="tooltip-text">${text}</span>` +
+    `</span>`;
+}
 
 // ── Init ──
 async function init() {
@@ -130,7 +145,8 @@ function render() {
 
   // Header
   const titleEl = document.getElementById('main-title');
-  titleEl.textContent = meta.title || (currentLang === 'cn' ? 'Project M.S. · 赐福点控制面板' : 'Project M.S. · Site of Grace Control Panel');
+  const titleText = meta.title || (currentLang === 'cn' ? 'Project M.S. · 赐福点控制面板' : 'Project M.S. · Site of Grace Control Panel');
+  titleEl.innerHTML = titleText + infoIcon(lbl.headerTooltip);
 
   document.getElementById('lang-toggle').textContent = lbl.toggleTo;
   document.getElementById('status-bar').innerHTML =
@@ -139,7 +155,7 @@ function render() {
     `<span class="status-item">${lbl.backup}: ${meta.backup}</span>` +
     (meta.subtitle ? `<span class="status-item" style="color:var(--text-dim)">${meta.subtitle}</span>` : '');
 
-  document.getElementById('buildings-title').textContent = lbl.buildings;
+  document.getElementById('buildings-title').innerHTML = lbl.buildings + infoIcon(lbl.buildingsTooltip);
   const footerEl = document.getElementById('footer-text');
   if (footerEl) {
     footerEl.textContent = currentLang === 'cn'
@@ -232,7 +248,7 @@ function renderAccordion() {
     return `
       <div class="accordion-item" id="acc-item-${i}">
         <div class="accordion-header ${isOpen ? 'open' : ''}" onclick="toggleAccordion(${i})">
-          <span class="accordion-title">${s.icon} ${s.label}</span>
+          <span class="accordion-title">${s.icon} ${s.label}${infoIcon(s.tooltip)}</span>
           <span class="accordion-chevron">▾</span>
         </div>
         <div class="accordion-body ${isOpen ? 'open' : ''}" id="acc-body-${i}">
@@ -635,7 +651,7 @@ function renderConvAccordion() {
   document.getElementById('conv-accordion').innerHTML = `
     <div class="accordion-item" id="conv-outer-item">
       <div class="accordion-header ${openConvs.has(-1) ? 'open' : ''}" onclick="toggleConvOuter()">
-        <span class="accordion-title">${lbl.conversations}</span>
+        <span class="accordion-title">${lbl.conversations}${infoIcon(lbl.conversationsTooltip)}</span>
         <span class="accordion-chevron">▾</span>
       </div>
       <div class="accordion-body ${openConvs.has(-1) ? 'open' : ''}" id="conv-outer-body">

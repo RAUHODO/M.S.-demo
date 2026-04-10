@@ -45,6 +45,8 @@ header {
 }
 
 .header-left h1 {
+  display: flex;
+  align-items: center;
   font-size: 1.25rem;
   color: var(--gold);
   font-weight: 600;
@@ -96,6 +98,8 @@ main {
 section { margin-bottom: 28px; }
 
 .section-title {
+  display: flex;
+  align-items: center;
   color: var(--gold);
   font-size: 0.95rem;
   font-weight: 600;
@@ -224,7 +228,6 @@ section { margin-bottom: 28px; }
 .accordion-item {
   border: 1px solid var(--border);
   border-radius: 6px;
-  overflow: hidden;
 }
 
 .accordion-header {
@@ -238,10 +241,18 @@ section { margin-bottom: 28px; }
   font-size: 0.88rem;
   font-weight: 600;
   transition: background 0.15s;
+  border-radius: 6px;
 }
 
 .accordion-header:hover { background: var(--bg-card-hover); }
-.accordion-header.open { border-bottom: 1px solid var(--border); }
+.accordion-header.open {
+  border-bottom: 1px solid var(--border);
+  border-radius: 6px 6px 0 0;
+}
+
+.accordion-body.open {
+  border-radius: 0 0 6px 6px;
+}
 
 .accordion-title { color: var(--text-primary); }
 .accordion-badge {
@@ -415,6 +426,79 @@ section { margin-bottom: 28px; }
   border-radius: 6px;
   max-width: 90%;
   text-align: center;
+}
+
+/* ── Tooltip ── */
+.tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--text-dim);
+  color: var(--text-dim);
+  font-size: 0.58rem;
+  font-weight: 700;
+  font-style: normal;
+  cursor: default;
+  margin-left: 5px;
+  flex-shrink: 0;
+  line-height: 1;
+  transition: border-color 0.15s, color 0.15s;
+  user-select: none;
+}
+
+.info-icon:hover {
+  border-color: var(--gold-dim);
+  color: var(--gold-dim);
+}
+
+.tooltip-wrapper .tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 0;
+  transform: none;
+  background: rgba(18, 16, 10, 0.93);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.55;
+  padding: 8px 11px;
+  border-radius: 6px;
+  border: 1px solid var(--border-gold);
+  white-space: normal;
+  width: 240px;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+  z-index: 300;
+  text-align: left;
+}
+
+.tooltip-wrapper:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+  animation: tooltipFadeIn 0.18s ease;
+}
+
+/* In the sticky header, drop tooltip downward to avoid clipping */
+header .tooltip-wrapper .tooltip-text {
+  bottom: auto;
+  top: calc(100% + 7px);
+}
+
+@keyframes tooltipFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Footer ── */
