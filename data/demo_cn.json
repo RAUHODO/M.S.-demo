@@ -729,11 +729,11 @@
       {
         "date": "2026-04-05",
         "asset": "失色锻造石[8]",
-        "type": "战利品囤积",
+        "type": "战利品",
         "direction": "多",
-        "price": "成本 90,000 · 估值 120,000",
+        "price": "20,000 x 5",
         "status": "🟡",
-        "cost": 90000,
+        "cost": 100000,
         "value": 120000
       },
       {
@@ -742,15 +742,18 @@
         "type": "战利品",
         "direction": "多",
         "price": "—",
-        "status": "🟢"
+        "status": "🟢",
+        "value": 20000
       },
       {
         "date": "2026-04-14",
         "asset": "卢恩弯弧",
-        "type": "消耗品囤积",
-        "direction": "多",
-        "price": "40000/个",
-        "status": "🟡"
+        "type": "消耗品",
+        "direction": "空",
+        "price": "4,000 x 10",
+        "status": "🔴",
+        "cost": 40000,
+        "value": 44000
       }
     ],
     "closed_positions": [

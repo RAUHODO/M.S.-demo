@@ -487,14 +487,13 @@ function renderTrades() {
 
   const openRows = (t.open_positions || []).map(p => {
     if (isNewFmt) {
-      const priceStr = (p.cost && p.value)
-        ? `成本 ${p.cost.toLocaleString()} · 估值 ${p.value.toLocaleString()}`
-        : (p.price || '—');
+      const valueStr = p.value ? p.value.toLocaleString() : '';
       return `<div class="data-row">
         <span class="data-dot">${p.status || '🟡'}</span>
         <span class="dr-main">${p.asset}</span>
         <span class="dr-meta">${p.type} · ${p.direction}</span>
-        <span style="color:var(--text-secondary);font-size:0.76rem">${priceStr}</span>
+        <span style="color:var(--text-secondary);font-size:0.76rem">${p.price || '—'}</span>
+        ${valueStr ? `<span style="color:var(--gold-dim);font-size:0.76rem;font-weight:600">${valueStr}</span>` : ''}
       </div>`;
     }
     const pnl = Math.round((p.current - p.open_price) * 100);

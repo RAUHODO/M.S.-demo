@@ -729,11 +729,11 @@
       {
         "date": "2026-04-05",
         "asset": "Somber Smithing Stone [8]",
-        "type": "Loot stockpile",
+        "type": "Loot",
         "direction": "Long",
-        "price": "Cost 90,000 · Est. 120,000",
+        "price": "20,000 x 5",
         "status": "🟡",
-        "cost": 90000,
+        "cost": 100000,
         "value": 120000
       },
       {
@@ -742,15 +742,18 @@
         "type": "Loot",
         "direction": "Long",
         "price": "—",
-        "status": "🟢"
+        "status": "🟢",
+        "value": 20000
       },
       {
         "date": "2026-04-14",
         "asset": "Rune Arc",
-        "type": "Consumable stockpile",
-        "direction": "Long",
-        "price": "40,000/ea",
-        "status": "🟡"
+        "type": "Consumable",
+        "direction": "Short",
+        "price": "4,000 x 10",
+        "status": "🔴",
+        "cost": 40000,
+        "value": 44000
       }
     ],
     "closed_positions": [
