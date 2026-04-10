@@ -732,9 +732,9 @@
         "type": "战利品",
         "direction": "多",
         "price": "20,000 x 5",
-        "status": "🟡",
-        "cost": 100000,
-        "value": 120000
+        "status": "⚫",
+        "current_price": 20000,
+        "price_color": "dim"
       },
       {
         "date": "2026-04-10",
@@ -743,7 +743,8 @@
         "direction": "多",
         "price": "—",
         "status": "🟢",
-        "value": 20000
+        "current_price": 20000,
+        "price_color": "red"
       },
       {
         "date": "2026-04-14",
@@ -752,8 +753,8 @@
         "direction": "空",
         "price": "4,000 x 10",
         "status": "🔴",
-        "cost": 40000,
-        "value": 44000
+        "current_price": 4200,
+        "price_color": "red"
       }
     ],
     "closed_positions": [
@@ -761,9 +762,7 @@
         "date": "2026-04-12",
         "asset": "失色锻造石[7]",
         "type": "短线交易",
-        "pnl": "+40000卢恩",
-        "cost": 72000,
-        "sell": 112000
+        "display": "16,000 x 7"
       },
       {
         "date": "2026-04-08",

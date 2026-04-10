@@ -487,13 +487,14 @@ function renderTrades() {
 
   const openRows = (t.open_positions || []).map(p => {
     if (isNewFmt) {
-      const valueStr = p.value ? p.value.toLocaleString() : '';
+      const priceColor = p.price_color === 'red' ? 'var(--c-red,#f87171)' : p.price_color === 'dim' ? 'var(--text-dim)' : 'var(--gold-dim)';
+      const cpStr = p.current_price != null ? `<span style="color:${priceColor};font-size:0.76rem;font-weight:600">${p.current_price.toLocaleString()}</span>` : '';
       return `<div class="data-row">
         <span class="data-dot">${p.status || '🟡'}</span>
         <span class="dr-main">${p.asset}</span>
         <span class="dr-meta">${p.type} · ${p.direction}</span>
         <span style="color:var(--text-secondary);font-size:0.76rem">${p.price || '—'}</span>
-        ${valueStr ? `<span style="color:var(--gold-dim);font-size:0.76rem;font-weight:600">${valueStr}</span>` : ''}
+        ${cpStr}
       </div>`;
     }
     const pnl = Math.round((p.current - p.open_price) * 100);
@@ -509,16 +510,14 @@ function renderTrades() {
   const closedList = t.closed_positions || t.recent_closed || [];
   const closedRows = closedList.map(p => {
     if (isNewFmt) {
-      const positive = typeof p.pnl === 'string' ? p.pnl.startsWith('+') : p.pnl >= 0;
-      const costStr = (p.cost && p.sell)
-        ? `<span class="dr-meta" style="font-size:0.72rem">${p.cost.toLocaleString()} → ${p.sell.toLocaleString()}</span>`
-        : '';
+      const displayStr = p.display
+        ? `<span style="color:var(--c-red,#f87171);font-size:0.76rem;font-weight:600">${p.display}</span>`
+        : (p.pnl ? (() => { const pos = typeof p.pnl === 'string' ? p.pnl.startsWith('+') : p.pnl >= 0; return `<span class="${pos ? 'c-green' : 'c-red'}">${p.pnl}</span>`; })() : '');
       return `<div class="data-row">
-        <span class="data-dot">${positive ? '🟢' : '🔴'}</span>
+        <span class="data-dot">🔴</span>
         <span class="dr-main">${p.asset}</span>
         <span class="dr-meta">${p.type} · ${p.date}</span>
-        ${costStr}
-        <span class="${positive ? 'c-green' : 'c-red'}">${p.pnl}</span>
+        ${displayStr}
       </div>`;
     }
     return `<div class="data-row">
