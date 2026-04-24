@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project M.S. · Site of Grace</title>
-  <link rel="stylesheet" href="css/style.css?v=phase1f">
+  <title>Mosphere · Site of Grace</title>
+  <link rel="stylesheet" href="css/style.css?v=phase1r">
 </head>
 <body>
   <header id="header">
@@ -12,33 +12,41 @@
       <h1 id="main-title"></h1>
       <div id="header-subtitle"></div>
     </div>
-    <div class="status-bar" id="status-bar"></div>
-    <button id="lang-toggle" class="lang-btn" onclick="toggleLang()">EN</button>
+    <div class="view-switch" id="view-switch">
+      <button type="button" class="view-opt active" data-view="mobile">📱 手机版</button>
+      <button type="button" class="view-opt" data-view="desktop">🖥️ 桌面版</button>
+    </div>
+    <div class="lang-switch" id="lang-switch">
+      <button type="button" class="lang-opt" data-lang="cn" onclick="setLang('cn')">中</button>
+      <button type="button" class="lang-opt" data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
   </header>
 
   <main>
-    <!-- Conversation Demo (above buildings, collapsible) -->
+    <!-- Conversation Demo (手机版特供，放最顶) -->
     <section id="conversation-section">
       <div class="accordion" id="conv-accordion"></div>
     </section>
 
-    <!-- Building Panel -->
+    <!-- Accordion Content (SECTIONS) -->
+    <section id="content-section">
+      <div class="accordion" id="accordion"></div>
+    </section>
+
+    <!-- Building Panel (cards 放下面，对齐 live 顺序) -->
     <section id="buildings-section">
-      <div class="section-title" id="buildings-title"></div>
       <div id="buildings-grid"></div>
       <div class="building-detail" id="building-detail" style="display:none"></div>
     </section>
 
-    <!-- Accordion Content -->
-    <section id="content-section">
-      <div class="accordion" id="accordion"></div>
-    </section>
+    <!-- Status bar (footer) -->
+    <div class="status-bar" id="status-bar"></div>
   </main>
 
   <footer>
-    <p id="footer-text">Demo with fictional data. Project M.S. is a personal AI OS project.</p>
+    <p id="footer-text">Demo with fictional data. Mosphere is a personal AI OS project.</p>
   </footer>
 
-  <script src="js/app.js?v=phase1e"></script>
+  <script src="js/app.js?v=phase1t"></script>
 </body>
 </html>

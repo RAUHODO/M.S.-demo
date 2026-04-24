@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   Project M.S. Demo — Main Application
+   Mosphere Demo — Main Application
    ═══════════════════════════════════════════ */
 
 let data = null;
@@ -45,7 +45,7 @@ const L = {
     conversations: '💬 示范对话',
     conversationsTooltip: '褪色者与交界地居民的实际交流记录。可转接不同建筑与对应NPC对话。',
     headerTooltip: '褪色者的个人中枢。梅琳娜在此观察、记录、做出判断。',
-    headerSubtitle: '个人 AI 助手系统 · Local-first · 《艾尔登法环》世界观包装 · 所有数据均为虚构演示',
+    headerSubtitle: '个人 AI 助手系统 · 本地优先 · 所有数据均为虚构演示',
     statusRunning: '运行中',
     uptime: '运行', backup: '备份',
     today: '今日', sevenD: '7日共',
@@ -68,7 +68,7 @@ const L = {
     conversations: '💬 Demo Conversations',
     conversationsTooltip: 'Real exchanges between the Tarnished and residents of the Lands Between. You can transfer between buildings to talk to different NPCs.',
     headerTooltip: "The Tarnished's personal hub. Melina observes, records, and makes decisions here.",
-    headerSubtitle: 'Personal AI assistant OS · Local-first · Elden Ring aesthetic · All data is fictional',
+    headerSubtitle: 'Personal AI assistant OS · Local-first · All data is fictional',
     statusRunning: 'Running',
     uptime: 'Uptime', backup: 'Backup',
     today: 'Today', sevenD: '7d total ',
@@ -113,14 +113,17 @@ async function loadData() {
   data = await resp.json();
 }
 
-function toggleLang() {
-  currentLang = currentLang === 'cn' ? 'en' : 'cn';
+function setLang(lang) {
+  if (lang === currentLang) return;
+  currentLang = lang;
   activeBuilding = -1;
   openSections.clear();
   openSections.add(0); // 切换语言后日记保持展开
   openConvs.clear();
   loadData().then(render);
 }
+// 兼容旧入口
+function toggleLang() { setLang(currentLang === 'cn' ? 'en' : 'cn'); }
 
 // ── Data helpers (normalize CN new format vs EN old format) ──
 function getMeta() {
@@ -164,25 +167,26 @@ function render() {
 
   // Header
   const titleEl = document.getElementById('main-title');
-  const titleText = meta.title || (currentLang === 'cn' ? 'Project M.S. · 赐福点控制面板' : 'Project M.S. · Site of Grace Control Panel');
-  titleEl.innerHTML = titleText + infoIcon(lbl.headerTooltip);
+  const titleText = meta.title || (currentLang === 'cn' ? 'Mosphere · 赐福点' : 'Mosphere · Site of Grace');
+  titleEl.textContent = titleText;
   document.getElementById('header-subtitle').textContent = lbl.headerSubtitle;
 
-  document.getElementById('lang-toggle').textContent = lbl.toggleTo;
+  // lang-switch active state
+  document.querySelectorAll('.lang-opt').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === currentLang);
+  });
   const statusLabel = currentLang === 'cn' ? '状态' : 'Status';
   document.getElementById('status-bar').innerHTML =
     `<div class="status-item"><span class="label">${statusLabel}</span><span class="value"><span class="status-dot"></span>${lbl.statusRunning}</span></div>` +
     `<div class="status-item"><span class="label">⏱ ${lbl.uptime}</span><span class="value">${meta.uptime}</span></div>` +
-    `<div class="status-item"><span class="label">☁️ ${lbl.backup}</span><span class="value">${formatBackupDate(meta.backup, currentLang)}</span></div>` +
     (meta.storageMain ? `<div class="status-item"><span class="label">🎒 ${lbl.storageMain}</span><span class="value">${meta.storageMain}</span></div>` : '') +
     (meta.storageSD   ? `<div class="status-item"><span class="label">📦 ${lbl.storageSD}</span><span class="value">${meta.storageSD}</span></div>` : '');
 
-  document.getElementById('buildings-title').innerHTML = lbl.buildings + infoIcon(lbl.buildingsTooltip);
   const footerEl = document.getElementById('footer-text');
   if (footerEl) {
     footerEl.textContent = currentLang === 'cn'
-      ? '本页面为 Project M.S. 项目演示，所有数据均为虚构，采用《艾尔登法环》世界观包装。Project M.S. 是一个个人 AI 操作系统项目。'
-      : 'Demo with fictional data. Project M.S. is a personal AI OS project.';
+      ? '本页面为 Mosphere 项目演示，所有数据均为虚构，采用《艾尔登法环》世界观包装。Mosphere 是一个个人 AI 操作系统项目。'
+      : 'Demo with fictional data. Mosphere is a personal AI OS project.';
   }
   renderConvAccordion();
   renderBuildings();
@@ -192,7 +196,7 @@ function render() {
 // ── Buildings ──
 function renderBuildings() {
   const lbl = L[currentLang];
-  const sorted = getBuildings().sort((a, b) => b.week - a.week);
+  const sorted = getBuildings().sort((a, b) => b.today - a.today);
   const grid = document.getElementById('buildings-grid');
 
   const cards = sorted.map((b, i) => {
@@ -214,14 +218,12 @@ function renderBuildings() {
         <div class="card-name">${b.emoji} ${b.name}</div>
         <div class="card-npc">${b.npc_handle}</div>
         <div class="card-count">${b.today}</div>
-        <div class="card-sub">${lbl.today} · ${lbl.sevenD}${b.week}${b.history != null ? ` · ${lbl.historyTotal}${b.history}` : ''}</div>
+        <div class="card-sub">${lbl.today} · ${lbl.sevenD}${b.week}${b.history != null ? `<br>${lbl.historyTotal}${b.history}` : ''}</div>
         <svg width="${svgW}" height="${SH}">${bars}</svg>
       </div>`;
   }).join('');
 
-  // 第 9 格虚线占位（落在第 3 档最后一格）
-  grid.innerHTML = cards + `<div class="building-card placeholder grade-3"></div>`;
-
+  grid.innerHTML = cards;
   renderBuildingDetail(sorted);
 }
 
