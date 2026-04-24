@@ -1,8 +1,12 @@
 /* ═══════════════════════════════════════════
-   desktop.css — 桌面版 3 列布局 + 16:9 锁
+   desktop.css — 桌面版 3 列布局
+   设计基准 1536×864 + transform: scale 整页等比缩放
    ═══════════════════════════════════════════ */
 
-html, body { height: 100%; }
+/* 锁 root font-size = 16px：忽略浏览器字号偏好，rem 不跟着变大挤破固定 px 布局；
+   整页缩放由下面的 transform: scale 统管 */
+html { font-size: 16px; }
+html, body { height: 100%; margin: 0; }
 body.view-desktop {
   overflow: hidden;
   display: flex;
@@ -11,38 +15,48 @@ body.view-desktop {
   background: var(--bg-primary);
 }
 
-/* 16:9 锁 + flex 列布局 */
+/* #app 固定 1536×864，transform: scale 按视窗等比缩放 */
 body.view-desktop #app {
   margin: 0;
   padding: 6px 12px;
-  width: min(100vw, calc(100vh * 16 / 9));
-  height: min(100vh, calc(100vw * 9 / 16));
+  width: 1536px;
+  height: 864px;
   display: flex;
   flex-direction: column;
+  transform-origin: center center;
+  transform: scale(var(--app-scale, 1));
 }
 
+/* topbar 与 3-col body 同基准对齐：title 350 / status 790 / view 177 / lang 177
+   #app 内宽 = 1536 - 24 padding = 1512；4 children × 3 gaps × 6 = 18；items 总 1494
+   边界 x=350（左/中分界）/ x=1146（中/右分界）和 body 3-col 完全一致 */
 body.view-desktop header {
   flex-shrink: 0;
+  flex-wrap: nowrap;
   background: transparent;
   border-bottom: none;
   padding: 0 0 6px 0;
+  gap: 6px;
 }
-
-/* status-bar 在桌面 topbar 里横排，不做 footer */
-body.view-desktop .status-bar {
-  flex: 3;
+body.view-desktop header .title-box { flex: 0 0 350px; min-width: 0; }
+body.view-desktop header .status-bar {
+  flex: 0 0 790px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
   margin-top: 0;
-  flex-wrap: nowrap;
 }
-body.view-desktop .status-bar .status-item {
+body.view-desktop header .status-bar .status-item {
   min-width: 0;
-  flex: 1;
+  flex: unset;
 }
+body.view-desktop header .view-switch { flex: 0 0 177px; min-width: 0; }
+body.view-desktop header .lang-switch { flex: 0 0 177px; min-width: 0; }
 
-/* 3 列主体 */
+/* 3 列主体（与 topbar 同基准对齐：350 / 790 / 360） */
 .desktop-layout {
   display: grid;
-  grid-template-columns: 350px minmax(0, 1fr) 360px;
+  grid-template-columns: 350px 790px 360px;
   gap: 6px;
   flex: 1;
   min-height: 0;

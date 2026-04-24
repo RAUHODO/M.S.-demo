@@ -195,9 +195,23 @@ if (_origRender) {
   };
 }
 
+// 全局等比缩放：设计基准 1536×864（= 1920×1080 @ 125% DPI 的 CSS viewport）
+function fitDashboardScale() {
+  if (!document.body.classList.contains('view-desktop')) {
+    document.documentElement.style.setProperty('--app-scale', 1);
+    return;
+  }
+  const DESIGN_W = 1536, DESIGN_H = 864;
+  const scale = Math.min(window.innerWidth / DESIGN_W, window.innerHeight / DESIGN_H);
+  document.documentElement.style.setProperty('--app-scale', scale);
+}
+window.addEventListener('resize', fitDashboardScale);
+fitDashboardScale();
+
 // 启动
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initDesktop);
+  document.addEventListener('DOMContentLoaded', () => { fitDashboardScale(); initDesktop(); });
 } else {
+  fitDashboardScale();
   initDesktop();
 }
