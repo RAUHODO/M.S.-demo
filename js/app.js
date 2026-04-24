@@ -15,25 +15,27 @@ const SECTIONS = {
   cn: [
     { icon: '📔', label: '梅梅日记',     tooltip: '梅琳娜每天凌晨写的观察日记。她眼中的褪色者，有主观判断，不是流水账。' },
     { icon: '🌊', label: '凝月之地',     tooltip: '梅琳娜的每周直觉备忘。记录"说不清楚但有感觉的东西"——跨天看下来觉得不对劲的、有规律的观察。' },
-    { icon: '🏛️', label: '大书库',       tooltip: '每日客观数据自动聚合。天气、睡眠、消费、完成事项，零AI参与，纯数字记录。' },
     { icon: '⏰', label: '大赐福·密室', tooltip: '褪色者的任务管理。本周待办、循环习惯、长期目标，由解指恩雅看护。' },
     { icon: '💡', label: '魔法学院',     tooltip: '褪色者的灵感收集站。瑟濂负责分类存档，按战技、探索、装备、魔法等标签整理。' },
     { icon: '💊', label: '蔷薇教堂',     tooltip: '褪色者的身体与状态数据。饮食、睡眠、体重、运动记录，由白面具梵雷看护。' },
     { icon: '📊', label: '圆桌厅堂',     tooltip: '褪色者的战略分析与资产交易记录。基甸负责复盘和持仓管理。' },
     { icon: '💰', label: '埃雷教堂',     tooltip: '褪色者的收支流水。卢恩的来源与去向，由流浪商人记账。' },
     { icon: '📚', label: '黄金树大教堂', tooltip: '褪色者的个人档案。已确认的事实、梅琳娜的推断、其他NPC的评价，由柯林管理。' },
+    { icon: '🌋', label: '火山官邸',     tooltip: '菈雅管理的人物档案。记录褪色者在交界地遇见的至交、战友、伙伴、熟人、路人，各自归档。' },
+    { icon: '🏛️', label: '大书库',       tooltip: '每日客观数据自动聚合。天气、睡眠、消费、完成事项，零AI参与，纯数字记录。' },
     { icon: '📋', label: '巡逻报告',     tooltip: '梅琳娜定时巡查各建筑后生成的简报。包含各建筑近期动态和本周习惯任务完成情况。' },
   ],
   en: [
     { icon: '📔', label: "Melina's Journal",   tooltip: "Melina's daily observation journal, written each night. Her view of the Tarnished — subjective, with real opinions." },
     { icon: '🌊', label: 'Moongazing Grounds', tooltip: "Melina's weekly intuition memo. Things she noticed across the week that feel significant but hard to explain." },
-    { icon: '🏛️', label: 'Grand Library',      tooltip: 'Daily objective data, auto-aggregated. Weather, sleep, expenses, completed tasks. Zero AI involvement, pure numbers.' },
     { icon: '⏰', label: 'Inner Sanctum',      tooltip: "The Tarnished's task management. Weekly to-dos, recurring habits, long-term goals, maintained by Enia the Finger Reader." },
     { icon: '💡', label: 'Academy',            tooltip: "The Tarnished's idea collection. Sellen categorizes and archives ideas by tags like combat arts, exploration, equipment, and magic." },
     { icon: '💊', label: 'Rose Church',        tooltip: "The Tarnished's physical and behavioral data. Diet, sleep, weight, exercise records, maintained by White Mask Varré." },
     { icon: '📊', label: 'Roundtable Hold',    tooltip: 'Strategic analysis and asset trading records. Gideon handles reviews and position management.' },
     { icon: '💰', label: "Church of Elleh",    tooltip: "The Tarnished's financial ledger. Rune income and expenses, tracked by the Nomadic Merchant." },
     { icon: '📚', label: 'Erdtree Sanctuary',  tooltip: "The Tarnished's personal archive. Confirmed facts, Melina's inferences, and assessments from other NPCs, managed by Brother Corhyn." },
+    { icon: '🌋', label: 'Volcano Manor',      tooltip: "Rya's people registry. Soul-bound, comrades, companions, acquaintances, passersby — each filed in her hand." },
+    { icon: '🏛️', label: 'Grand Library',      tooltip: 'Daily objective data, auto-aggregated. Weather, sleep, expenses, completed tasks. Zero AI involvement, pure numbers.' },
     { icon: '📋', label: 'Patrol Report',      tooltip: "Melina's periodic building inspection briefing. Includes recent activity from each building and weekly habit task completion status." },
   ]
 };
@@ -49,7 +51,7 @@ const L = {
     statusRunning: '运行中',
     uptime: '运行', backup: '备份',
     today: '今日', sevenD: '7日共',
-    thisWeek: '本周', thisMonth: '本月', longTerm: '远期', habits: '循环习惯',
+    thisWeek: '本周', thisMonth: '本月', longTerm: '远期', habits: '习惯',
     done: '已完成', pending: '未完成',
     openPos: '持仓中', closedPos: '近期平仓',
     income: '收入', expense: '支出', net: '净额', currency: '卢恩',
@@ -57,6 +59,8 @@ const L = {
     confirmed: '✅ 已确认', inferred: '🔍 推断', external: '🌐 外部',
     diet: '饮食', sleep: '睡眠', weight: '体重', bath: '洗澡',
     exercise: '运动', steps: '步数',
+    homeCooked: '自煮', bodyFat: '体脂',
+    timesUnit: '次', stepsUnit: '步/日均',
     toggleTo: 'EN',
     tradeUnit: '笔',
     historyTotal: '历史共',
@@ -80,6 +84,8 @@ const L = {
     confirmed: '✅ Confirmed', inferred: '🔍 Inferred', external: '🌐 External',
     diet: 'Meals', sleep: 'Sleep', weight: 'Weight', bath: 'Bath',
     exercise: 'Exercise', steps: 'Steps',
+    homeCooked: 'Home-cooked', bodyFat: 'Body fat',
+    timesUnit: '×', stepsUnit: 'steps/day',
     toggleTo: '中',
     tradeUnit: '',
     historyTotal: 'Total ',
@@ -260,9 +266,10 @@ function renderBuildingDetail(sorted) {
 function renderAccordion() {
   const sections = SECTIONS[currentLang];
   const renderers = [
-    renderDiary, renderReflection, renderChronicle,
+    renderDiary, renderReflection,
     renderSchedule, renderInspirations, renderHealth,
-    renderTrades, renderFinance, renderArchive, renderPatrol
+    renderTrades, renderFinance, renderArchive, renderTeahouse,
+    renderChronicle, renderPatrol
   ];
   const container = document.getElementById('accordion');
   container.innerHTML = sections.map((s, i) => {
@@ -282,9 +289,10 @@ function renderAccordion() {
 
 function toggleAccordion(i) {
   const renderers = [
-    renderDiary, renderReflection, renderChronicle,
+    renderDiary, renderReflection,
     renderSchedule, renderInspirations, renderHealth,
-    renderTrades, renderFinance, renderArchive, renderPatrol
+    renderTrades, renderFinance, renderArchive, renderTeahouse,
+    renderChronicle, renderPatrol
   ];
   const header = document.querySelector(`#acc-item-${i} .accordion-header`);
   const body   = document.getElementById(`acc-body-${i}`);
@@ -303,7 +311,8 @@ function toggleAccordion(i) {
 // ── Section Renderers ──
 
 function renderDiary() {
-  return (data.diary || []).map(d => {
+  const list = data.diary || [];
+  const renderEntry = d => {
     const meta = [d.weekday, d.weather].filter(Boolean).join('　');
     return `<div style="margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid #2a2a2a">
       <div style="color:var(--gold);font-weight:600;margin-bottom:2px">
@@ -313,7 +322,16 @@ function renderDiary() {
       </div>
       <div style="font-size:0.84rem;line-height:1.8;color:var(--text-primary)">${d.content}</div>
     </div>`;
-  }).join('');
+  };
+  const recent = list.slice(0, 3).map(renderEntry).join('');
+  const older = list.slice(3);
+  const olderLabel = currentLang === 'cn' ? '📚 更早' : '📚 Earlier';
+  const olderHtml = older.length
+    ? `<details class="diary-older"><summary>${olderLabel}  <span style="color:var(--text-dim);font-weight:400">${older.length}</span></summary>
+        <div class="diary-older-body">${older.map(renderEntry).join('')}</div>
+      </details>`
+    : '';
+  return recent + olderHtml;
 }
 
 function renderReflection() {
@@ -330,7 +348,8 @@ function renderReflection() {
 }
 
 function renderChronicle() {
-  return (data.chronicle || []).map(c => {
+  const list = data.chronicle || [];
+  const renderEntry = c => {
     const meta = [c.weekday, c.weather].filter(Boolean).join('　');
     const tags = [];
     if (c.sleep)   tags.push(`😴 ${c.sleep}`);
@@ -338,15 +357,12 @@ function renderChronicle() {
     const tagsHtml = tags.length
       ? `<span style="color:var(--text-secondary);font-size:0.75rem;margin-left:10px">${tags.join('　')}</span>`
       : '';
-
     const completed = (c.completed || []).map(t =>
       `<span style="color:var(--green);font-size:0.75rem;margin-right:8px">✓ ${t}</span>`
     ).join('');
-
     const summaries = (c.summary || [c.content]).filter(Boolean).map(s =>
       `<div style="font-size:0.82rem;line-height:1.7">${s}</div>`
     ).join('');
-
     return `<div style="margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #2a2a2a">
       <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-bottom:4px">
         <span style="color:var(--gold);font-weight:600">${c.date}</span>
@@ -356,7 +372,16 @@ function renderChronicle() {
       ${completed ? `<div style="margin-bottom:4px">${completed}</div>` : ''}
       ${summaries}
     </div>`;
-  }).join('');
+  };
+  const recent = list.slice(0, 3).map(renderEntry).join('');
+  const older = list.slice(3);
+  const olderLabel = currentLang === 'cn' ? '📚 更早' : '📚 Earlier';
+  const olderHtml = older.length
+    ? `<details class="diary-older"><summary>${olderLabel}  <span style="color:var(--text-dim);font-weight:400">${older.length}</span></summary>
+        <div class="diary-older-body">${older.map(renderEntry).join('')}</div>
+      </details>`
+    : '';
+  return recent + olderHtml;
 }
 
 function renderSchedule() {
@@ -385,17 +410,45 @@ function renderSchedule() {
     </div>`;
   }
 
+  const habits = s.habits || s.recurring || [];
+  const thisMonth = s.this_month || [];
+  const longTerm = s.long_term || [];
+
+  function fold(label, items, renderFn) {
+    if (!items.length) return '';
+    return `<details class="sched-fold">
+      <summary>${label}  <span style="color:var(--text-dim);font-weight:400">${items.length}</span></summary>
+      <div class="sched-fold-body">${items.map(renderFn).join('')}</div>
+    </details>`;
+  }
   return `
     <div class="sub-header">${lbl.thisWeek}</div>${(s.this_week || []).map(row).join('')}
-    <div class="sub-header">${lbl.habits}</div>${(s.habits || s.recurring || []).map(habitRow).join('')}
-    <div class="sub-header">${lbl.thisMonth}</div>${(s.this_month || []).map(row).join('')}
-    <div class="sub-header">${lbl.longTerm}</div>${(s.long_term || []).map(row).join('')}
+    ${fold(lbl.habits, habits, habitRow)}
+    ${fold(lbl.thisMonth, thisMonth, row)}
+    ${fold(lbl.longTerm, longTerm, row)}
   `;
 }
 
 function renderInspirations() {
   const list = data.inspirations || [];
-  // flat array with category field — group by category
+  const EXPAND = new Set(['战技', '探索', 'Ash of War', 'Exploration']);
+
+  function catBlock(cat, items, dotFn) {
+    const done = items.filter(i => i.status === 'done').length;
+    const isOpen = EXPAND.has(cat);
+    const header = `${cat}  <span style="color:var(--text-dim);font-weight:400">${done}/${items.length}</span>`;
+    const rows = items.map(item =>
+      `<div class="data-row">
+        ${dotFn(item)}
+        <span class="dr-main ${item.status === 'done' ? 'insp-done' : ''}">${item.content}</span>
+      </div>`
+    ).join('');
+    return `<details class="insp-fold"${isOpen ? ' open' : ''}>
+      <summary>${header}</summary>
+      <div class="insp-fold-body">${rows}</div>
+    </details>`;
+  }
+
   if (Array.isArray(list)) {
     const grouped = {};
     list.forEach(item => {
@@ -403,28 +456,13 @@ function renderInspirations() {
       if (!grouped[cat]) grouped[cat] = [];
       grouped[cat].push(item);
     });
-    return Object.entries(grouped).map(([cat, items]) => {
-      const done = items.filter(i => i.status === 'done').length;
-      return `<div class="sub-header">${cat}  <span style="color:var(--text-dim);font-weight:400">${done}/${items.length}</span></div>` +
-        items.map(item =>
-          `<div class="data-row">
-            <span>${item.status === 'done' ? '✅' : '💡'}</span>
-            <span class="dr-main ${item.status === 'done' ? 'insp-done' : ''}">${item.content}</span>
-          </div>`
-        ).join('');
-    }).join('');
+    return Object.entries(grouped).map(([cat, items]) =>
+      catBlock(cat, items, i => `<span>${i.status === 'done' ? '✅' : '💡'}</span>`)
+    ).join('');
   }
-  // object format (old)
-  return Object.entries(list).map(([cat, items]) => {
-    const done = items.filter(i => i.status === 'done').length;
-    return `<div class="sub-header">${cat}  <span style="color:var(--text-dim);font-weight:400">${done}/${items.length}</span></div>` +
-      items.map(item =>
-        `<div class="data-row">
-          <span style="color:${item.status === 'done' ? 'var(--text-dim)' : 'var(--gold-dim)'}">${item.status === 'done' ? '✓' : '◆'}</span>
-          <span class="dr-main ${item.status === 'done' ? 'insp-done' : ''}">${item.content}</span>
-        </div>`
-      ).join('');
-  }).join('');
+  return Object.entries(list).map(([cat, items]) =>
+    catBlock(cat, items, i => `<span style="color:${i.status === 'done' ? 'var(--text-dim)' : 'var(--gold-dim)'}">${i.status === 'done' ? '✓' : '◆'}</span>`)
+  ).join('');
 }
 
 function renderHealth() {
@@ -441,46 +479,40 @@ function renderHealth() {
     const ex = h.exercise || {};
     const st = h.steps || {};
 
+    const dietMain = `🍳 ${d.home_cooked ?? '—'} · 🛵 ${d.delivery ?? 0} · 🥡 ${d.takeout ?? 0}`;
+    const dietMeta = d.home_ratio ? `${lbl.homeCooked} ${d.home_ratio}` : '';
+    const weightMeta = `${w.change ?? ''}${w.body_fat ? `　${lbl.bodyFat} ${w.body_fat} ${w.fat_change ?? ''}` : ''}`;
     return `
-      <div class="sub-header">${lbl.diet}</div>
-      <div class="data-row">
-        <span class="dr-label">🍳 在家</span><span class="dr-main">${d.home_cooked ?? '—'} 次</span>
-        <span class="dr-meta">🛵 外卖 ${d.delivery ?? 0}　🥡 自取 ${d.takeout ?? 0}</span>
+      <div class="data-row health-row">
+        <span class="dr-label-big">${lbl.diet}</span>
+        <span class="dr-main">${dietMain}</span>
+        <span class="dr-meta">${dietMeta}</span>
       </div>
-      <div class="data-row">
-        <span class="dr-label">早餐</span><span class="dr-main">${d.breakfast ?? '—'} 天</span>
-        ${d.home_ratio ? `<span class="dr-meta">在家率 ${d.home_ratio}</span>` : ''}
-      </div>
-
-      <div class="sub-header">${lbl.sleep}</div>
-      <div class="data-row">
+      <div class="data-row health-row">
+        <span class="dr-label-big">${lbl.sleep}</span>
         <span class="dr-main"><strong>${sl.average ?? '—'}</strong></span>
         <span class="dr-meta">${sl.trend ?? ''}</span>
       </div>
-
-      <div class="sub-header">${lbl.weight}</div>
-      <div class="data-row">
+      <div class="data-row health-row">
+        <span class="dr-label-big">${lbl.weight}</span>
         <span class="dr-main"><strong>${w.current ?? '—'}</strong></span>
-        <span class="dr-meta">${w.change ?? ''}　体脂 ${w.body_fat ?? '—'} ${w.fat_change ?? ''}</span>
+        <span class="dr-meta">${weightMeta}</span>
       </div>
-
-      <div class="sub-header">${lbl.bath}</div>
-      <div class="data-row">
-        <span class="dr-main">🛁 ${ba.bath ?? 0}次　🚿 ${ba.shower ?? 0}次</span>
+      <div class="data-row health-row">
+        <span class="dr-label-big">${lbl.bath}</span>
+        <span class="dr-main">🛁 ${ba.bath ?? 0} · 🚿 ${ba.shower ?? 0}</span>
       </div>
-
-      <div class="sub-header">${lbl.exercise}</div>
-      <div class="data-row">
-        <span class="dr-main"><strong>${ex.count ?? 0}</strong> 次</span>
+      <div class="data-row health-row">
+        <span class="dr-label-big">${lbl.exercise}</span>
+        <span class="dr-main"><strong>${ex.count ?? 0}</strong> ${lbl.timesUnit}</span>
         <span class="dr-meta">${ex.trend ?? ''}</span>
       </div>
-
-      <div class="sub-header">${lbl.steps}</div>
-      <div class="data-row">
-        <span class="dr-main"><strong>${(st.average ?? 0).toLocaleString()}</strong> 步/日均</span>
+      <div class="data-row health-row">
+        <span class="dr-label-big">${lbl.steps}</span>
+        <span class="dr-main"><strong>${(st.average ?? 0).toLocaleString()}</strong> ${lbl.stepsUnit}</span>
         <span class="dr-meta">${st.trend ?? ''}</span>
       </div>
-      ${h.notes ? `<div style="margin-top:10px;padding:8px 10px;background:rgba(58,53,32,0.3);border-left:2px solid var(--gold-dim);border-radius:4px;font-size:0.78rem;color:var(--text-secondary);font-style:italic">${h.notes}</div>` : ''}
+      ${h.notes ? `<div style="margin-top:10px;font-size:0.75rem;color:var(--text-dim);font-style:italic;text-align:center">${h.notes}</div>` : ''}
     `;
   }
 
@@ -622,13 +654,117 @@ function renderArchive() {
   const lbl = L[currentLang];
   const a = data.archive;
   if (!a) return '';
-  function group(title, items) {
-    return `<div class="sub-header">${title}</div>` +
-      (items || []).map(i =>
-        `<div class="data-row"><span class="dr-label">${i.key}</span><span class="dr-main">${i.value}</span></div>`
-      ).join('');
+  function rows(items) {
+    return (items || []).map(i =>
+      `<div class="data-row"><span class="dr-label">${i.key}</span><span class="dr-main">${i.value}</span></div>`
+    ).join('');
   }
-  return group(lbl.confirmed, a.confirmed) + group(lbl.inferred, a.inferred) + group(lbl.external, a.external);
+  function group(title, items) {
+    return `<div class="sub-header">${title}</div>` + rows(items);
+  }
+  function foldGroup(title, items) {
+    if (!items || !items.length) return '';
+    return `<details class="arch-fold">
+      <summary>${title}  <span style="color:var(--text-dim);font-weight:400">${items.length}</span></summary>
+      <div class="arch-fold-body">${rows(items)}</div>
+    </details>`;
+  }
+  return group(lbl.confirmed, a.confirmed) + foldGroup(lbl.inferred, a.inferred) + foldGroup(lbl.external, a.external);
+}
+
+function renderTeahouse() {
+  const t = data.teahouse;
+  if (!t || !t.contacts || !t.contacts.length) return '<div style="color:var(--text-dim)">火山官邸尚无登记</div>';
+
+  const ORDER_CN = ['至交', '战友', '伙伴', '熟人', '路人'];
+  const ORDER_EN = ['Soul-Bound', 'Comrade', 'Companion', 'Acquaintance', 'Passerby'];
+  const ORDER = currentLang === 'cn' ? ORDER_CN : ORDER_EN;
+  const TIER_ICON = {
+    '至交':'♛','战友':'♜','伙伴':'♝','熟人':'♞','路人':'♟',
+    'Soul-Bound':'♛','Comrade':'♜','Companion':'♝','Acquaintance':'♞','Passerby':'♟'
+  };
+  const CAT_ICON = {
+    '特质':'🔍','时间事件':'📅','社交关系':'💬',
+    'Trait':'🔍','Event':'📅','Relation':'💬'
+  };
+  const LBL = currentLang === 'cn'
+    ? { likes:'喜欢', dislikes:'不喜欢', goals:'目标' }
+    : { likes:'Likes', dislikes:'Dislikes', goals:'Goals' };
+
+  const byTier = {};
+  for (const c of t.contacts) {
+    const key = c.closeness || 'other';
+    if (!byTier[key]) byTier[key] = [];
+    byTier[key].push(c);
+  }
+  const orderedKeys = [
+    ...ORDER.filter(k => byTier[k]),
+    ...Object.keys(byTier).filter(k => !ORDER.includes(k))
+  ];
+
+  function tagRow(label, items, cls) {
+    if (!items || !items.length) return '';
+    const tags = items.map(i =>
+      `<span class="contact-field tag-${cls}">${i}</span>`).join('');
+    return `<div class="contact-tags"><span class="tag-label">${label}</span>${tags}</div>`;
+  }
+
+  // 剥掉 content 开头的重复日期（"04-01 夜，..." → "夜，..."）
+  function stripLeadingDate(s) {
+    return (s || '').replace(/^\d{2}-\d{2}[，,\s]*/, '');
+  }
+
+  function renderContact(c, isOpen) {
+    const meta = [
+      c.base_city ? `📍 ${c.base_city}` : '',
+      c.company ? `· ${c.company}` : ''
+    ].filter(Boolean).join(' ');
+    const metaHtml = meta ? `<div style="color:var(--text-dim);font-size:0.72rem;margin-bottom:4px">${meta}</div>` : '';
+
+    const likesHtml = tagRow(LBL.likes, c.likes, 'like');
+    const dislikesHtml = tagRow(LBL.dislikes, c.dislikes, 'dislike');
+    const goalsHtml = tagRow(LBL.goals, c.goals, 'goal');
+
+    let obsHtml = '';
+    if (c.observations && c.observations.length) {
+      const byCat = {};
+      for (const o of c.observations) {
+        const k = o.category;
+        if (!byCat[k]) byCat[k] = [];
+        byCat[k].push(o);
+      }
+      obsHtml = Object.entries(byCat).map(([cat, list]) => {
+        const icon = CAT_ICON[cat] || '•';
+        return `<div style="margin-top:6px">
+          <div style="color:var(--text-dim);font-size:0.7rem;font-weight:600;margin-bottom:2px">${icon} ${cat} · ${list.length}</div>
+          ${list.map(o =>
+            `<div class="data-row"><span class="log-time">${o.occurred_at || ''}</span><span class="log-summary">${stripLeadingDate(o.content)}</span></div>`
+          ).join('')}
+        </div>`;
+      }).join('');
+    }
+
+    return `<details class="contact-item"${isOpen ? ' open' : ''}>
+      <summary class="contact-name">${c.display_name}</summary>
+      <div class="contact-body">
+        ${metaHtml}
+        ${likesHtml}${dislikesHtml}${goalsHtml}
+        ${obsHtml}
+      </div>
+    </details>`;
+  }
+
+  let globalIdx = 0;
+  return orderedKeys.map(key => {
+    const group = byTier[key];
+    const icon = TIER_ICON[key] || '·';
+    const rendered = group.map(c => {
+      const isOpen = globalIdx === 0; // 只展开第一个（至交：菈妮）
+      globalIdx++;
+      return renderContact(c, isOpen);
+    }).join('');
+    return `<div class="sub-header">${icon} ${key}  <span style="color:var(--text-dim);font-weight:400">${group.length}</span></div>` + rendered;
+  }).join('');
 }
 
 function renderPatrol() {
@@ -769,11 +905,7 @@ function renderMessages(messages) {
       ? `<div style="font-size:0.68rem;color:var(--text-dim);margin-bottom:2px">${prefix}</div>`
       : '';
 
-    return `<div class="chat-msg assistant"><div class="chat-bubble">
-      ${prefixHtml}
-      <div class="chat-npc-label">${npcName}${toolTag}</div>
-      ${msg.content}
-    </div></div>`;
+    return `<div class="chat-msg assistant"><div class="chat-bubble">${prefixHtml}<div class="chat-npc-label">${npcName}${toolTag}</div>${msg.content}</div></div>`;
   }).join('');
 }
 

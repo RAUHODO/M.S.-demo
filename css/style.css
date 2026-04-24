@@ -624,6 +624,150 @@ footer {
 ::-webkit-scrollbar-thumb { background: var(--border-gold); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
 
+/* ── 通用折叠（schedule / inspirations / archive / diary older / teahouse contact） ── */
+.sched-fold,
+.insp-fold,
+.arch-fold {
+  margin-top: 6px;
+  margin-bottom: 4px;
+}
+.sched-fold > summary,
+.insp-fold > summary,
+.arch-fold > summary {
+  cursor: pointer;
+  color: var(--gold);
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  background: rgba(40,35,22,0.3);
+  border-left: 2px solid var(--border-gold);
+  border-radius: 4px;
+  list-style: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sched-fold > summary::-webkit-details-marker,
+.insp-fold > summary::-webkit-details-marker,
+.arch-fold > summary::-webkit-details-marker { display: none; }
+.sched-fold > summary::before,
+.insp-fold > summary::before,
+.arch-fold > summary::before {
+  content: '▸';
+  color: var(--text-dim);
+  font-size: 0.72rem;
+  transition: transform 0.15s;
+}
+.sched-fold[open] > summary::before,
+.insp-fold[open] > summary::before,
+.arch-fold[open] > summary::before { transform: rotate(90deg); }
+.sched-fold > summary:hover,
+.insp-fold > summary:hover,
+.arch-fold > summary:hover { background: rgba(90,77,46,0.2); }
+.sched-fold-body,
+.insp-fold-body,
+.arch-fold-body {
+  padding: 4px 6px 0 6px;
+}
+
+/* ── Health 单行布局 ── */
+.health-row .dr-label-big {
+  min-width: 48px;
+  color: var(--gold-dim);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+/* ── Diary 更早折叠 ── */
+.diary-older {
+  margin-top: 8px;
+}
+.diary-older summary {
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 8px 10px;
+  background: rgba(40,35,22,0.3);
+  border-left: 2px solid var(--border-gold);
+  border-radius: 4px;
+  list-style: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.diary-older summary::-webkit-details-marker { display: none; }
+.diary-older summary::before {
+  content: '▸';
+  color: var(--text-dim);
+  font-size: 0.72rem;
+  transition: transform 0.15s;
+}
+.diary-older[open] summary::before { transform: rotate(90deg); }
+.diary-older summary:hover { background: rgba(90,77,46,0.18); }
+.diary-older-body {
+  padding: 12px 6px 0 6px;
+}
+
+/* ── Teahouse / Volcano Manor ── */
+.contact-item {
+  margin-bottom: 6px;
+  background: rgba(40,35,22,0.4);
+  border-left: 2px solid var(--border-gold);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.contact-item summary.contact-name {
+  cursor: pointer;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  list-style: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.contact-item summary.contact-name::-webkit-details-marker { display: none; }
+.contact-item summary.contact-name::before {
+  content: '▸';
+  color: var(--text-dim);
+  font-size: 0.72rem;
+  transition: transform 0.15s;
+}
+.contact-item[open] summary.contact-name::before { transform: rotate(90deg); }
+.contact-item summary.contact-name:hover { background: rgba(90,77,46,0.18); }
+.contact-item .contact-body {
+  padding: 4px 12px 12px 12px;
+}
+
+.contact-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+.contact-tags .tag-label {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  min-width: 40px;
+}
+.contact-field {
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+.contact-field.tag-like    { background: rgba(74,222,128,0.10); color: #86efac; border-color: rgba(74,222,128,0.25); }
+.contact-field.tag-dislike { background: rgba(248,113,113,0.10); color: #fca5a5; border-color: rgba(248,113,113,0.25); }
+.contact-field.tag-goal    { background: rgba(200,170,110,0.12); color: var(--gold-bright); border-color: var(--border-gold); }
+
 /* ── Responsive ── */
 @media (max-width: 600px) {
   header { padding: 6px 12px; gap: 4px; flex-wrap: wrap; }

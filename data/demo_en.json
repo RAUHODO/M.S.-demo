@@ -198,53 +198,6 @@
       "history_calls": 95
     },
     {
-      "id": "forge",
-      "name": "Smithing Alcove",
-      "npc_name": "Smithing Master Hewg",
-      "npc_title": "@Hewg",
-      "emoji": "🔨",
-      "description": "A silent smith. Says only what must be said.",
-      "recent_logs": [
-        {
-          "date": "04-09",
-          "summary": "Weapon configuration for the final battle — preparation underway",
-          "time": "19:45"
-        },
-        {
-          "date": "04-09",
-          "summary": "Hound's Tooth +10",
-          "time": "14:10"
-        },
-        {
-          "date": "04-08",
-          "summary": "Gurranq's Beast Claw — catalogued",
-          "time": "20:55"
-        },
-        {
-          "date": "04-08",
-          "summary": "Carian Regal Scepter +9, Intelligence scaling at S",
-          "time": "16:30"
-        },
-        {
-          "date": "04-07",
-          "summary": "Greatsword infusion complete — Cold affinity",
-          "time": "21:20"
-        }
-      ],
-      "today_calls": 7,
-      "week_calls": 41,
-      "sparkline": [
-        6,
-        7,
-        5,
-        6,
-        7,
-        5,
-        5
-      ],
-      "history_calls": 390
-    },
-    {
       "id": "ruins",
       "name": "Academy",
       "npc_name": "Sorcerer Sellen",
@@ -384,6 +337,52 @@
         2
       ],
       "history_calls": 165
+    },
+    {
+      "name": "Volcano Manor",
+      "npc_name": "Rya",
+      "npc_title": "@Rya",
+      "emoji": "🌋",
+      "today_calls": 3,
+      "week_calls": 18,
+      "history_calls": 140,
+      "sparkline": [
+        2,
+        3,
+        1,
+        2,
+        3,
+        4,
+        3
+      ],
+      "description": "Manor attendant. Quiet archivist. Every encounter with the Tarnished ends up filed away.",
+      "recent_logs": [
+        {
+          "date": "04-17",
+          "time": "14:20",
+          "summary": "Tarnished reviewed Ranni's Dark Moon covenant entry, lingered, then left."
+        },
+        {
+          "date": "04-16",
+          "time": "09:10",
+          "summary": "Bernahl left word: gone to find his own witch, don't wait up."
+        },
+        {
+          "date": "04-14",
+          "time": "22:00",
+          "summary": "Tarnished returned from Ainsel River with a doll. Rya paused mid-entry."
+        },
+        {
+          "date": "04-12",
+          "time": "18:30",
+          "summary": "Blaidd asked after Ranni. Rya replied 'not on record here.'"
+        },
+        {
+          "date": "04-10",
+          "time": "11:45",
+          "summary": "Patches tried to amend his own debt entry. Rya blocked him."
+        }
+      ]
     }
   ],
   "diary": [
@@ -1373,5 +1372,320 @@
         }
       ]
     }
-  ]
+  ],
+  "teahouse": {
+    "contacts": [
+      {
+        "display_name": "Ranni",
+        "closeness": "Soul-Bound",
+        "base_city": "Caria Manor",
+        "company": "Witch",
+        "notes": "At the Three Sisters tower she gave the Spirit Calling Bell and Lone Wolf Ashes. Later, in Ainsel River Main, he retrieved the Carian Manor doll from a coffin. He lingers by the Carian Study Hall; there is a chill on his sleeves when he returns. Dark Moon Ring not yet given.",
+        "likes": [
+          "the Dark Moon",
+          "silence"
+        ],
+        "dislikes": [
+          "the Two Fingers",
+          "the Golden Order"
+        ],
+        "goals": [
+          "break the Two Fingers' grip",
+          "usher in the Age of the Stars"
+        ],
+        "observations": [
+          {
+            "category": "Event",
+            "content": "04-01, night, Church of Elleh. She introduced herself as Renna, handed him a bell and the ashes of three wolves. He took them without question.",
+            "occurred_at": "04-01"
+          },
+          {
+            "category": "Event",
+            "content": "04-14, night, Ainsel River Main. He opened the coffin, took out a doll. Sat by the grace afterward, speaking to it for a long while.",
+            "occurred_at": "04-14"
+          },
+          {
+            "category": "Trait",
+            "content": "Every time he returns from Carian Study Hall, the library's cold scent clings to his sleeves. He says it is 'her scent.'",
+            "occurred_at": "04-09"
+          },
+          {
+            "category": "Relation",
+            "content": "Blaidd came asking after her. Rya said nothing on record. I noticed he stood at the door a while after Blaidd left.",
+            "occurred_at": "04-12"
+          }
+        ]
+      },
+      {
+        "display_name": "Bernahl",
+        "closeness": "Comrade",
+        "base_city": "Limgrave / Volcano Manor",
+        "company": "Recusant",
+        "notes": "Met at the Warmaster's Shack, taught Ashes of War. At Volcano Manor they carried out assassinations together: Istvan, Rileigh, Vargram. After the Leyndell Fortified Manor invasion he handed over Braggart's Roar. Later left a letter: 'gone to find my own witch.'",
+        "likes": [
+          "Ashes of War",
+          "free will"
+        ],
+        "dislikes": [
+          "the Two Fingers' dogma"
+        ],
+        "goals": [
+          "defy the Greater Will"
+        ],
+        "observations": [
+          {
+            "category": "Event",
+            "content": "04-02, Warmaster's Shack. Bernahl asked: 'still trust the grace's guidance?' He answered: 'I do.' Bernahl smiled and began teaching.",
+            "occurred_at": "04-02"
+          },
+          {
+            "category": "Event",
+            "content": "04-08, Volcano Manor. A Letter to Bernahl: target is Vargram the Raging Wolf at Leyndell's Fortified Manor. They invaded together; he returned with Vargram's Raging Wolf Set.",
+            "occurred_at": "04-08"
+          },
+          {
+            "category": "Relation",
+            "content": "On handover, Bernahl pressed Braggart's Roar into his hand: 'my things are yours now, no harm in one less ash for me.'",
+            "occurred_at": "04-09"
+          },
+          {
+            "category": "Event",
+            "content": "04-16, Bernahl gone from his chamber. Only a blade and a letter: 'gone to find my witch. Don't come after me.'",
+            "occurred_at": "04-16"
+          }
+        ]
+      },
+      {
+        "display_name": "Blaidd",
+        "closeness": "Comrade",
+        "base_city": "Mistwood / Caelid",
+        "company": "Half-Wolf",
+        "notes": "Summoned at Mistwood Ruins with a finger snap. Together they felled Darriwil at the Forlorn Hound Evergaol. Tracked through Siofra River; stood back-to-back at Redmane Castle's festival and slew Starscourge Radahn. After the fight he spoke of the path to Nokron.",
+        "likes": [
+          "Ranni",
+          "the fight"
+        ],
+        "dislikes": [
+          "betrayal"
+        ],
+        "goals": [
+          "protect Ranni"
+        ],
+        "observations": [
+          {
+            "category": "Event",
+            "content": "04-03, Mistwood Ruins. He snapped his fingers at the night sky. A half-wolf fell from above. Blaidd: 'Lady Ranni has had me wait long for you.'",
+            "occurred_at": "04-03"
+          },
+          {
+            "category": "Event",
+            "content": "04-05, Forlorn Hound Evergaol. Blaidd's gold phantom cut down Darriwil beside him. Outside, Blaidd pressed a Somber Smithing Stone into his hand.",
+            "occurred_at": "04-05"
+          },
+          {
+            "category": "Relation",
+            "content": "04-11, Redmane festival. Back to back against Starscourge. As Radahn fell, Blaidd: 'now the stars begin to turn.'",
+            "occurred_at": "04-11"
+          },
+          {
+            "category": "Trait",
+            "content": "Blaidd is sparing with words, but every meeting begins with the same question: 'is Lady Ranni well?' He always answers: 'she is well.'",
+            "occurred_at": "04-13"
+          }
+        ]
+      },
+      {
+        "display_name": "Diallos",
+        "closeness": "Companion",
+        "base_city": "Roundtable Hold / Academy Gate Town / Volcano Manor",
+        "company": "House Hoslow",
+        "notes": "First met by the study rail at Roundtable Hold, swearing the Hoslow name and asking the Tarnished to find his retainer Lanya. North of Academy Gate Town he found Lanya's body and vowed vengeance on the Recusants. Later joined Volcano Manor. In the lower corridor before the Great Serpent he faltered; I stood beside him until he stood again.",
+        "likes": [
+          "the Hoslow name",
+          "jar companions"
+        ],
+        "dislikes": [
+          "his own weakness"
+        ],
+        "goals": [
+          "prove himself"
+        ],
+        "observations": [
+          {
+            "category": "Event",
+            "content": "04-02, Roundtable Hold, by the study rail. Diallos muttered 'Hoslow speaks in blood,' voice trembling. He gave me Lanya's name.",
+            "occurred_at": "04-02"
+          },
+          {
+            "category": "Event",
+            "content": "04-06, north of Academy Gate Town. Helped him find Lanya's body. He knelt long; stood up vowing 'I will avenge her on the Recusants.'",
+            "occurred_at": "04-06"
+          },
+          {
+            "category": "Event",
+            "content": "04-09, Manor guest chamber. Diallos wore a Recusant's cloak. Hesitated a long time before sitting, as if unsure whether he deserved the seat.",
+            "occurred_at": "04-09"
+          },
+          {
+            "category": "Relation",
+            "content": "04-11, Manor lower corridor, before the Great Serpent. He huddled in a corner: 'it is too dreadful ahead.' I said nothing, only stood beside him. In time, he stood too.",
+            "occurred_at": "04-11"
+          },
+          {
+            "category": "Trait",
+            "content": "When no one watches, he polishes the Hoslow crest on his helm. That crest has never gleamed in combat.",
+            "occurred_at": "04-15"
+          }
+        ]
+      },
+      {
+        "display_name": "Rya",
+        "closeness": "Companion",
+        "base_city": "Liurnia / Volcano Manor",
+        "company": "Attendant",
+        "notes": "At the Liurnia pavilion she asked him to recover her stolen necklace; he retrieved it from the Boilprawn Shack for 1000 runes, earning the Manor letter. Later, on the ruined hill beneath the Erdtree, she took his hand and warped them both to the Manor. In her chamber she revealed her true form - Zorayas, serpent-kin. He accepted.",
+        "likes": [
+          "Tanith",
+          "the truth"
+        ],
+        "dislikes": [
+          "deception"
+        ],
+        "goals": [
+          "find a meaning of her own"
+        ],
+        "observations": [
+          {
+            "category": "Event",
+            "content": "04-04, Scenic Isle pavilion. She handed him a crumpled note: 'the necklace was taken by the man who boils prawns.' He went; paid 1000 runes. She nearly knocked the table when she bowed.",
+            "occurred_at": "04-04"
+          },
+          {
+            "category": "Event",
+            "content": "04-07, ruined hill near the Erdtree. She beckoned; he took her hand. Three breaths, then a black mist. Next moment: the Manor hall.",
+            "occurred_at": "04-07"
+          },
+          {
+            "category": "Relation",
+            "content": "04-10, chamber corridor. The door opened to a serpent, not her. 'This is my true form.' He said: 'still you.' She froze.",
+            "occurred_at": "04-10"
+          },
+          {
+            "category": "Trait",
+            "content": "On each entry she draws a small serpent mark beside the name. Only she knows what it means.",
+            "occurred_at": "04-13"
+          }
+        ]
+      },
+      {
+        "display_name": "Tanith",
+        "closeness": "Acquaintance",
+        "base_city": "Volcano Manor",
+        "company": "Manor Lady",
+        "notes": "On first meeting she invited him to join the Manor, handed him the guest key. From time to time a letter appears on the chamber desk - an assassination contract. When Rya's serpent form is revealed, Tanith tells him: 'she is a good child, be kind to her.'",
+        "likes": [
+          "Rykard",
+          "Recusants"
+        ],
+        "dislikes": [
+          "the Erdtree"
+        ],
+        "goals": [
+          "revive Rykard"
+        ],
+        "observations": [
+          {
+            "category": "Event",
+            "content": "04-07, Manor hall. She did not rise. 'So, the one Rya brought. Join us. Take the key.'",
+            "occurred_at": "04-07"
+          },
+          {
+            "category": "Event",
+            "content": "04-09, first letter on the desk: 'Old Knight Istvan.' He took it. Second one followed after.",
+            "occurred_at": "04-09"
+          },
+          {
+            "category": "Relation",
+            "content": "04-10, after Rya's serpent form was revealed. He went to Tanith. 'She is a good child; be kind to her,' she said - plain as a weather report.",
+            "occurred_at": "04-10"
+          }
+        ]
+      },
+      {
+        "display_name": "Patches",
+        "closeness": "Acquaintance",
+        "base_city": "Limgrave / Volcano Manor",
+        "company": "Merchant / Recusant",
+        "notes": "At Murkwater Cave he sprang a trap, then begged mercy and opened shop. Later at Volcano Manor he kicked the Tarnished off a cliff on Mt. Gelmir's rainbow-stone path. Gave a contract to kill Great Horned Tragoth; rewarded with the Magma Whip Candlestick.",
+        "likes": [
+          "runes",
+          "traps"
+        ],
+        "dislikes": [
+          "taking losses",
+          "churches"
+        ],
+        "goals": [
+          "live to see another cycle"
+        ],
+        "observations": [
+          {
+            "category": "Event",
+            "content": "04-02, Murkwater Cave. Opened the chest; a Chaos Gate sent him to the Caelid mines. Crawled back: 'that one feels familiar, like a past life.'",
+            "occurred_at": "04-02"
+          },
+          {
+            "category": "Event",
+            "content": "04-08, first resting place on Mt. Gelmir. Followed the rainbow stones. A kick from behind. The drop was long but he lived. From below Patches called up: 'not on purpose, honest.'",
+            "occurred_at": "04-08"
+          },
+          {
+            "category": "Relation",
+            "content": "04-11, letter from Patches: 'kill Great Horned Tragoth.' On return he tossed the whip over: 'willing to share, I suppose.' The grin was fake.",
+            "occurred_at": "04-11"
+          },
+          {
+            "category": "Trait",
+            "content": "At the Manor, Patches always grins first, then touches his own chest - where the blade once pierced him.",
+            "occurred_at": "04-15"
+          }
+        ]
+      },
+      {
+        "display_name": "Dung Eater",
+        "closeness": "Passerby",
+        "base_city": "Roundtable Hold / Leyndell Catacombs",
+        "company": "Cursed",
+        "notes": "First seen as a phantom on the Roundtable balcony, ranting of curses. Later found the body locked in a Leyndell Catacombs cell. Some Seedbed Curses fed in, the set not yet complete. Every exchange is 'defile,' 'curse' - not on the same wavelength.",
+        "likes": [
+          "curses",
+          "defilement"
+        ],
+        "dislikes": [
+          "the Erdtree",
+          "Order"
+        ],
+        "goals": [
+          "curse them all"
+        ],
+        "observations": [
+          {
+            "category": "Event",
+            "content": "04-01, Roundtable balcony. The phantom stood there crying 'curse! curse them all!' He listened a moment, turned, and walked away.",
+            "occurred_at": "04-01"
+          },
+          {
+            "category": "Event",
+            "content": "04-13, Leyndell Catacombs cell. The body, chained, said the same words. He passed a Seedbed Curse through the bars. The other smiled.",
+            "occurred_at": "04-13"
+          },
+          {
+            "category": "Trait",
+            "content": "The Dung Eater never asks his name. Never remembers it. He does not need to be remembered.",
+            "occurred_at": "04-15"
+          }
+        ]
+      }
+    ]
+  }
 }
