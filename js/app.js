@@ -65,6 +65,7 @@ const L = {
     tradeUnit: '笔',
     historyTotal: '历史共',
     storageMain: '随身包', storageSD: '木箱',
+    viewMobile: '📱 手机版', viewDesktop: '🖥️ 桌面版',
   },
   en: {
     buildings: '⚡ Building Activity',
@@ -87,6 +88,7 @@ const L = {
     homeCooked: 'Home-cooked', bodyFat: 'Body fat',
     timesUnit: '×', stepsUnit: 'steps/day',
     toggleTo: '中',
+    viewMobile: '📱 Mobile', viewDesktop: '🖥️ Desktop',
     tradeUnit: '',
     historyTotal: 'Total ',
     storageMain: 'Pouch', storageSD: 'Chest',
@@ -112,6 +114,24 @@ function infoIcon(text) {
 async function init() {
   await loadData();
   render();
+  wireViewSwitch();
+}
+
+function wireViewSwitch() {
+  document.querySelectorAll('.view-switch .view-opt').forEach(btn => {
+    if (btn.dataset.wired) return;
+    btn.dataset.wired = '1';
+    btn.addEventListener('click', () => {
+      const v = btn.dataset.view;
+      if (!v) return;
+      try { localStorage.setItem('demo_view', v); } catch(e) {}
+      if (v === 'desktop' && !document.body.classList.contains('view-desktop')) {
+        location.replace('/desktop.html');
+      } else if (v === 'mobile' && document.body.classList.contains('view-desktop')) {
+        location.replace('/');
+      }
+    });
+  });
 }
 
 async function loadData() {
@@ -181,6 +201,12 @@ function render() {
   document.querySelectorAll('.lang-opt').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === currentLang);
   });
+  // view-switch 按钮双语文字
+  document.querySelectorAll('.view-opt').forEach(btn => {
+    const v = btn.dataset.view;
+    if (v === 'mobile')  btn.textContent = lbl.viewMobile;
+    if (v === 'desktop') btn.textContent = lbl.viewDesktop;
+  });
   const statusLabel = currentLang === 'cn' ? '状态' : 'Status';
   document.getElementById('status-bar').innerHTML =
     `<div class="status-item"><span class="label">${statusLabel}</span><span class="value"><span class="status-dot"></span>${lbl.statusRunning}</span></div>` +
@@ -240,6 +266,7 @@ function toggleBuilding(idx) {
 
 function renderBuildingDetail(sorted) {
   const el = document.getElementById('building-detail');
+  if (!el) return; // 桌面版无此元素
   if (activeBuilding < 0 || activeBuilding >= sorted.length) {
     el.style.display = 'none';
     return;
@@ -773,14 +800,18 @@ function renderPatrol() {
 
   // CN new format: buildings array + weekly_tasks
   if (p.buildings) {
-    const buildingRows = p.buildings.map(b =>
-      `<div style="margin-bottom:10px">
-        <div style="color:var(--gold);font-size:0.8rem;font-weight:600;margin-bottom:3px">${b.name}  <span style="color:var(--text-dim);font-weight:400">${b.calls_3day}次 · 3日</span></div>
-        ${b.logs.map(l =>
-          `<div class="data-row"><span class="log-time">${l.date}</span><span class="log-summary">${l.summary}</span></div>`
-        ).join('')}
-      </div>`
-    ).join('');
+    const EXPAND = new Set(['圆桌厅堂', '蔷薇教堂', 'Roundtable Hold', 'Rose Church']);
+    const buildingRows = p.buildings.map(b => {
+      const isOpen = EXPAND.has(b.name);
+      return `<details class="patrol-fold"${isOpen ? ' open' : ''}>
+        <summary>${b.name}  <span style="color:var(--text-dim);font-weight:400">${b.calls_3day}次 · 3日</span></summary>
+        <div class="patrol-fold-body">
+          ${b.logs.map(l =>
+            `<div class="data-row"><span class="log-time">${l.date}</span><span class="log-summary">${l.summary}</span></div>`
+          ).join('')}
+        </div>
+      </details>`;
+    }).join('');
 
     const taskRows = (p.weekly_tasks || []).map(t =>
       `<div class="data-row">
@@ -871,16 +902,22 @@ function toggleConv(i) {
   }
 }
 
-// Map CN sender names to display
+// Sender name map（双语）
 const SENDER_MAP = {
   tarnished: { role: 'user' },
   system:    { role: 'system' },
-  melina:    { role: 'assistant', name: '梅琳娜' },
-  gideon:    { role: 'assistant', name: '百智爵士基甸' },
-  varre:     { role: 'assistant', name: '白面具梵雷' },
-  sellen:    { role: 'assistant', name: '魔法师瑟濂' },
-  enia:      { role: 'assistant', name: '解指恩雅' },
+  melina:    { role: 'assistant', name: { cn: '梅琳娜',       en: 'Melina' } },
+  gideon:    { role: 'assistant', name: { cn: '百智爵士基甸', en: 'Sir Gideon Ofnir' } },
+  varre:     { role: 'assistant', name: { cn: '白面具梵雷',   en: 'White Mask Varré' } },
+  sellen:    { role: 'assistant', name: { cn: '魔法师瑟濂',   en: 'Sorceress Sellen' } },
+  enia:      { role: 'assistant', name: { cn: '解指恩雅',     en: 'Enia the Finger Reader' } },
 };
+function senderName(sender) {
+  const entry = SENDER_MAP[sender];
+  if (!entry || !entry.name) return sender || '';
+  if (typeof entry.name === 'string') return entry.name;
+  return entry.name[currentLang] || entry.name.cn || sender;
+}
 
 function renderMessages(messages) {
   return messages.map(msg => {
@@ -896,7 +933,7 @@ function renderMessages(messages) {
     }
 
     // assistant
-    const npcName = msg.npc || SENDER_MAP[sender]?.name || sender || '';
+    const npcName = msg.npc || senderName(sender);
     const prefix  = msg.prefix || '';
     const toolTag = msg.tool_call
       ? `<span style="font-size:0.68rem;color:var(--text-dim);background:rgba(200,170,110,0.08);padding:1px 5px;border-radius:3px;margin-left:6px">🔧 ${msg.tool_call}</span>`

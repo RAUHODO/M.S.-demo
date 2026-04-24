@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <script>
+  // UA 分流 + localStorage 偏好覆盖
+  (function(){
+    var pref = null;
+    try { pref = localStorage.getItem('demo_view'); } catch(e){}
+    if (pref === 'desktop') { location.replace('/desktop.html'); return; }
+    if (!pref) {
+      var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (!isMobile) { location.replace('/desktop.html'); return; }
+    }
+  })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MoSphere · Site of Grace Demo</title>
-  <link rel="stylesheet" href="css/style.css?v=phase2l">
+  <link rel="stylesheet" href="css/style.css?v=phase3a">
 </head>
 <body>
   <header id="header">
@@ -47,6 +59,6 @@
     <p id="footer-text">Demo with fictional data. MoSphere is a personal AI OS project.</p>
   </footer>
 
-  <script src="js/app.js?v=phase2m"></script>
+  <script src="js/app.js?v=phase3a"></script>
 </body>
 </html>

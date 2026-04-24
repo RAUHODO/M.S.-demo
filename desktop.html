@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script>
+// UA 分流 + localStorage 偏好覆盖
+(function(){
+  var pref = null;
+  try { pref = localStorage.getItem('demo_view'); } catch(e){}
+  if (pref === 'mobile') { location.replace('/'); return; }
+  if (!pref) {
+    var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile) { location.replace('/'); return; }
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MoSphere · Site of Grace Demo</title>
+<link rel="stylesheet" href="css/style.css?v=phase3a">
+<link rel="stylesheet" href="css/desktop.css?v=phase3a">
+</head>
+<body class="view-desktop">
+<div id="app">
+  <header id="header">
+    <div class="title-box">
+      <h1 id="main-title"></h1>
+      <div id="header-subtitle"></div>
+    </div>
+    <div class="status-bar" id="status-bar"></div>
+    <div class="view-switch" id="view-switch">
+      <button type="button" class="view-opt" data-view="mobile">📱 手机版</button>
+      <button type="button" class="view-opt active" data-view="desktop">🖥️ 桌面版</button>
+    </div>
+    <div class="lang-switch" id="lang-switch">
+      <button type="button" class="lang-opt" data-lang="cn" onclick="setLang('cn')">中</button>
+      <button type="button" class="lang-opt" data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+  </header>
+
+  <div class="desktop-layout">
+    <!-- 左列：建筑卡 2×4 -->
+    <div class="left-col">
+      <div class="cells" id="buildings-grid"></div>
+    </div>
+
+    <!-- 中列：content-area + mid-bar + log-area -->
+    <div class="mid-col">
+      <div class="content-area" id="content-area">
+        <div class="accordion" id="accordion"></div>
+      </div>
+      <div class="mid-bar" id="mid-bar"></div>
+      <div class="log-area" id="log-area"></div>
+    </div>
+
+    <!-- 右列：对话 -->
+    <aside class="right-col">
+      <div class="chat-demo" id="conv-area">
+        <div class="accordion" id="conv-accordion"></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script src="js/app.js?v=phase3a"></script>
+<script src="js/desktop.js?v=phase3a"></script>
+</body>
+</html>

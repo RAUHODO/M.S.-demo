@@ -255,7 +255,7 @@ section { margin-bottom: 6px; }
 }
 .building-card .card-npc {
   font-size: 0.75rem;
-  color: var(--text-dim);
+  color: var(--text-secondary);
   margin-bottom: 4px;
   white-space: nowrap;
   overflow: hidden;
@@ -269,7 +269,7 @@ section { margin-bottom: 6px; }
 }
 .building-card .card-sub {
   font-size: 0.72rem;
-  color: var(--text-dim);
+  color: var(--text-secondary);
   line-height: 1.4;
   margin-top: 2px;
 }
@@ -627,13 +627,15 @@ footer {
 /* ── 通用折叠（schedule / inspirations / archive / diary older / teahouse contact） ── */
 .sched-fold,
 .insp-fold,
-.arch-fold {
+.arch-fold,
+.patrol-fold {
   margin-top: 6px;
   margin-bottom: 4px;
 }
 .sched-fold > summary,
 .insp-fold > summary,
-.arch-fold > summary {
+.arch-fold > summary,
+.patrol-fold > summary {
   cursor: pointer;
   color: var(--gold);
   font-size: 0.84rem;
@@ -650,10 +652,12 @@ footer {
 }
 .sched-fold > summary::-webkit-details-marker,
 .insp-fold > summary::-webkit-details-marker,
-.arch-fold > summary::-webkit-details-marker { display: none; }
+.arch-fold > summary::-webkit-details-marker,
+.patrol-fold > summary::-webkit-details-marker { display: none; }
 .sched-fold > summary::before,
 .insp-fold > summary::before,
-.arch-fold > summary::before {
+.arch-fold > summary::before,
+.patrol-fold > summary::before {
   content: '▸';
   color: var(--text-dim);
   font-size: 0.72rem;
@@ -661,13 +665,16 @@ footer {
 }
 .sched-fold[open] > summary::before,
 .insp-fold[open] > summary::before,
-.arch-fold[open] > summary::before { transform: rotate(90deg); }
+.arch-fold[open] > summary::before,
+.patrol-fold[open] > summary::before { transform: rotate(90deg); }
 .sched-fold > summary:hover,
 .insp-fold > summary:hover,
-.arch-fold > summary:hover { background: rgba(90,77,46,0.2); }
+.arch-fold > summary:hover,
+.patrol-fold > summary:hover { background: rgba(90,77,46,0.2); }
 .sched-fold-body,
 .insp-fold-body,
-.arch-fold-body {
+.arch-fold-body,
+.patrol-fold-body {
   padding: 4px 6px 0 6px;
 }
 
