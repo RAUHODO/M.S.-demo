@@ -89,11 +89,8 @@ const L = {
 
 function formatBackupDate(iso, lang) {
   if (!iso) return '';
-  if (lang === 'cn') {
-    const parts = iso.split('-');
-    return parts.length === 3 ? `${parseInt(parts[1])}月${parseInt(parts[2])}日` : iso;
-  }
-  return iso;
+  const parts = iso.split('-');
+  return parts.length === 3 ? `${parts[1]}-${parts[2]}` : iso;
 }
 
 // ── Tooltip Helper ──
@@ -153,7 +150,8 @@ function getBuildings() {
     sparkline: b.sparkline || b.daily_counts || [],
     description: b.description,
     recent_logs: (b.recent_logs || []).map(l => ({
-      time: l.date || l.time,
+      date: l.date || '',
+      time: l.time || '',
       summary: l.summary,
     })),
   }));
@@ -171,13 +169,13 @@ function render() {
   document.getElementById('header-subtitle').textContent = lbl.headerSubtitle;
 
   document.getElementById('lang-toggle').textContent = lbl.toggleTo;
+  const statusLabel = currentLang === 'cn' ? '状态' : 'Status';
   document.getElementById('status-bar').innerHTML =
-    `<span class="status-item"><span class="status-dot"></span>${lbl.statusRunning}</span>` +
-    `<span class="status-item">${lbl.uptime}: ${meta.uptime}</span>` +
-    `<span class="status-item">${lbl.backup}: ${formatBackupDate(meta.backup, currentLang)}</span>` +
-    (meta.storageMain ? `<span class="status-item">🎒 ${lbl.storageMain} ${meta.storageMain}</span>` : '') +
-    (meta.storageSD   ? `<span class="status-item">📦 ${lbl.storageSD} ${meta.storageSD}</span>` : '') +
-    (meta.subtitle ? `<span class="status-item" style="color:var(--text-dim)">${meta.subtitle}</span>` : '');
+    `<div class="status-item"><span class="label">${statusLabel}</span><span class="value"><span class="status-dot"></span>${lbl.statusRunning}</span></div>` +
+    `<div class="status-item"><span class="label">⏱ ${lbl.uptime}</span><span class="value">${meta.uptime}</span></div>` +
+    `<div class="status-item"><span class="label">☁️ ${lbl.backup}</span><span class="value">${formatBackupDate(meta.backup, currentLang)}</span></div>` +
+    (meta.storageMain ? `<div class="status-item"><span class="label">🎒 ${lbl.storageMain}</span><span class="value">${meta.storageMain}</span></div>` : '') +
+    (meta.storageSD   ? `<div class="status-item"><span class="label">📦 ${lbl.storageSD}</span><span class="value">${meta.storageSD}</span></div>` : '');
 
   document.getElementById('buildings-title').innerHTML = lbl.buildings + infoIcon(lbl.buildingsTooltip);
   const footerEl = document.getElementById('footer-text');
@@ -197,12 +195,9 @@ function renderBuildings() {
   const sorted = getBuildings().sort((a, b) => b.week - a.week);
   const grid = document.getElementById('buildings-grid');
 
-  grid.innerHTML = sorted.map((b, i) => {
+  const cards = sorted.map((b, i) => {
     const isActive = i === activeBuilding;
-    const hasToday = b.today > 0;
-    const color = b.color;
-    const bg = hasToday ? `${color}18` : '#2e2e2e';
-    const border = isActive ? color : (hasToday ? color : '#444');
+    const grade = i < 3 ? 1 : i < 6 ? 2 : 3;
 
     const BW = 7, GAP = 2, SH = 24;
     const max = Math.max(...b.sparkline, 1);
@@ -210,21 +205,22 @@ function renderBuildings() {
     const bars = b.sparkline.map((v, j) => {
       const h = v > 0 ? Math.max(Math.round((v / max) * SH), 1) : 0;
       const op = j === b.sparkline.length - 1 ? '1' : '0.65';
-      return `<rect x="${j*(BW+GAP)}" y="${SH-h}" width="${BW}" height="${h}" fill="${color}" opacity="${op}" rx="1"/>`;
+      return `<rect x="${j*(BW+GAP)}" y="${SH-h}" width="${BW}" height="${h}" fill="currentColor" opacity="${op}" rx="1"/>`;
     }).join('');
 
     return `
-      <div class="building-card ${isActive ? 'active' : ''}"
-           style="border-color:${border};background:${bg}"
+      <div class="building-card grade-${grade} ${isActive ? 'active' : ''}"
            onclick="toggleBuilding(${i})">
-        <div class="card-emoji">${b.emoji}</div>
-        <div class="card-name" style="color:${hasToday ? color : '#aaa'}">${b.name}</div>
+        <div class="card-name">${b.emoji} ${b.name}</div>
         <div class="card-npc">${b.npc_handle}</div>
-        <div class="card-count" style="color:${hasToday ? color : '#666'}">${b.today}</div>
+        <div class="card-count">${b.today}</div>
         <div class="card-sub">${lbl.today} · ${lbl.sevenD}${b.week}${b.history != null ? ` · ${lbl.historyTotal}${b.history}` : ''}</div>
         <svg width="${svgW}" height="${SH}">${bars}</svg>
       </div>`;
   }).join('');
+
+  // 第 9 格虚线占位（落在第 3 档最后一格）
+  grid.innerHTML = cards + `<div class="building-card placeholder grade-3"></div>`;
 
   renderBuildingDetail(sorted);
 }
@@ -252,7 +248,7 @@ function renderBuildingDetail(sorted) {
     </div>
     <div class="detail-desc">${b.description}</div>
     ${b.recent_logs.map(l =>
-      `<div class="log-row"><span class="log-time">${l.time}</span><span class="log-summary">${l.summary}</span></div>`
+      `<div class="log-row"><span class="log-time">${l.date}${l.time ? ' ' + l.time : ''}</span><span class="log-summary">${l.summary}</span></div>`
     ).join('')}
     ${b.recent_logs.length < 5 ? `<div style="text-align:center;color:var(--text-dim);font-size:0.72rem;font-style:italic;margin-top:8px;padding-top:6px;border-top:1px solid var(--border)">—— 近三日无更多记录 ——</div>` : ''}
   `;
