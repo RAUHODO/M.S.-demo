@@ -290,7 +290,7 @@ body.view-desktop .cells .building-card svg { max-height: 22px; margin: 2px auto
 .right-col .accordion-header { padding: 8px 10px; font-size: 0.85rem; }
 
 /* 桌面 topbar 按钮/方格尺寸微调（紧凑） */
-body.view-desktop .title-box { padding: 4px 10px; flex: 2; min-width: 180px; }
+body.view-desktop .title-box { padding: 4px 10px; }
 body.view-desktop .title-box h1 { font-size: 0.92rem; }
 body.view-desktop .title-box #header-subtitle { font-size: 0.66rem; }
 body.view-desktop .view-switch,

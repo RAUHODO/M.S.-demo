@@ -106,7 +106,7 @@ function renderDesktopBuildings() {
   const lbl = L[currentLang];
 
   const cards = sorted.map((b, i) => {
-    const grade = i < 3 ? 1 : i < 6 ? 2 : 3;
+    const grade = i < 2 ? 1 : i < 4 ? 2 : i < 6 ? 3 : 4;
     const BW = 6, GAP = 2, SH = 20;
     const max = Math.max(...b.sparkline, 1);
     const svgW = b.sparkline.length * (BW + GAP) - GAP;

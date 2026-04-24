@@ -221,15 +221,18 @@ section { margin-bottom: 6px; }
   outline-offset: -2px;
 }
 
-/* 3 档金色半透明叠加（按 7 日活跃度排名分档，每档 3 格） */
+/* 4 档金色半透明叠加（按今日活跃度排名分档，8 栋每档 2 格） */
 .building-card.grade-1 {
-  background: linear-gradient(135deg, rgba(232,198,112,0.35), rgba(232,198,112,0.12) 85%), var(--bg-card);
+  background: linear-gradient(135deg, rgba(232,198,112,0.40), rgba(232,198,112,0.15) 85%), var(--bg-card);
 }
 .building-card.grade-2 {
-  background: linear-gradient(135deg, rgba(200,170,110,0.22), rgba(200,170,110,0.08) 85%), var(--bg-card);
+  background: linear-gradient(135deg, rgba(216,184,108,0.28), rgba(216,184,108,0.10) 85%), var(--bg-card);
 }
 .building-card.grade-3 {
-  background: linear-gradient(135deg, rgba(139,117,73,0.12), rgba(139,117,73,0.04) 85%), var(--bg-card);
+  background: linear-gradient(135deg, rgba(180,153,98,0.18), rgba(180,153,98,0.06) 85%), var(--bg-card);
+}
+.building-card.grade-4 {
+  background: linear-gradient(135deg, rgba(139,117,73,0.10), rgba(139,117,73,0.03) 85%), var(--bg-card);
 }
 
 /* 第 9 格占位：虚线框、无内容、不响应点击 */
