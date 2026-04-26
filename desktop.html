@@ -6,10 +6,10 @@
 (function(){
   var pref = null;
   try { pref = localStorage.getItem('demo_view'); } catch(e){}
-  if (pref === 'mobile') { location.replace('/'); return; }
+  if (pref === 'mobile') { location.replace('./'); return; }
   if (!pref) {
     var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (isMobile) { location.replace('/'); return; }
+    if (isMobile) { location.replace('./'); return; }
   }
 })();
 </script>

@@ -157,9 +157,9 @@ function wireViewSwitch() {
       if (!v) return;
       try { localStorage.setItem('demo_view', v); } catch(e) {}
       if (v === 'desktop' && !document.body.classList.contains('view-desktop')) {
-        location.replace('/desktop.html');
+        location.replace('desktop.html');
       } else if (v === 'mobile' && document.body.classList.contains('view-desktop')) {
-        location.replace('/');
+        location.replace('./');
       }
     });
   });
