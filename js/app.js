@@ -56,6 +56,7 @@ function demoHandleFlip(id) {
 }
 
 // ── Placeholder logo（金色版，沿用 demo --gold #C8AA6E）────
+// 保留作 fallback：未来新建筑没自己的 logo 时回落到此
 function demoPlaceholderLogoSvg() {
   return `<svg class="bf-logo" viewBox="0 0 100 100" width="90" height="90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -65,6 +66,80 @@ function demoPlaceholderLogoSvg() {
     <line x1="50" y1="56" x2="50" y2="52.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     <line x1="50" y1="56" x2="53" y2="56" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
   </svg>`;
+}
+
+// ── 8 栋专属 logo（阶段 1.5 定稿：7 栋 base + manor v2）────
+// 风格：03 印章圆环 + 06 空心建筑线稿 + 比例 B + 正面无透视
+// 全 currentColor 驱动；灰色降级（待落地）自动跟随
+const DEMO_LOGO_BODIES = {
+  // 赐福点 — 弯曲光柱 + 顶端球 + 地面
+  grace: `
+    <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2"/>
+    <line x1="22" y1="78" x2="78" y2="78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 50 78 Q 38 54 50 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="50" cy="24" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/>`,
+  // 圆桌厅堂 — 拱顶大堂 + 中门
+  roundtable: `
+    <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2"/>
+    <line x1="20" y1="82" x2="80" y2="82" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <rect x="30" y="50" width="40" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M 30 50 Q 50 24 70 50" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M 44 82 Q 44 64 50 64 Q 56 64 56 82" fill="none" stroke="currentColor" stroke-width="1.5"/>`,
+  // 蔷薇教堂 — 教堂主体 + 三角顶 + 玫瑰窗
+  perfumer: `
+    <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2"/>
+    <line x1="22" y1="82" x2="78" y2="82" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <rect x="32" y="44" width="36" height="38" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <polygon points="30,44 70,44 50,22" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <line x1="50" y1="22" x2="50" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="50" cy="58" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/>`,
+  // 大赐福·密室 — 拱形入口 + 中央大光柱
+  clocktower: `
+    <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2"/>
+    <line x1="22" y1="82" x2="78" y2="82" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 24 82 L 24 50 Q 24 26 50 26 Q 76 26 76 50 L 76 82" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M 50 82 Q 38 54 50 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="50" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/>`,
+  // 魔法学院 — 双塔 + 飞拱
+  ruins: `
+    <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2"/>
+    <line x1="20" y1="82" x2="80" y2="82" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <rect x="24" y="28" width="14" height="54" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <polygon points="22,28 40,28 31,18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <rect x="62" y="28" width="14" height="54" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <polygon points="60,28 78,28 69,18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M 38 42 Q 50 28 62 42" fill="none" stroke="currentColor" stroke-width="2"/>`,
+  // 黄金树大教堂 — 树冠 + 树干嵌门
+  library: `
+    <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2"/>
+    <line x1="22" y1="82" x2="78" y2="82" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="50" cy="42" r="22" fill="none" stroke="currentColor" stroke-width="2"/>
+    <line x1="46" y1="64" x2="46" y2="82" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <line x1="54" y1="64" x2="54" y2="82" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 46 76 Q 46 70 50 70 Q 54 70 54 76" fill="none" stroke="currentColor" stroke-width="1.5"/>`,
+  // 埃雷教堂 — 简朴小教堂 + 顶部十字
+  merchant: `
+    <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2"/>
+    <line x1="22" y1="82" x2="78" y2="82" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <rect x="34" y="46" width="32" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <polygon points="32,46 68,46 50,30" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <line x1="50" y1="30" x2="50" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <line x1="46" y1="22" x2="54" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M 44 82 Q 44 68 50 68 Q 56 68 56 82" fill="none" stroke="currentColor" stroke-width="1.5"/>`,
+  // 火山官邸 — v2：火山主体（占主导）+ 山脚小宅 + 顶部喷烟
+  manor: `
+    <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2"/>
+    <line x1="18" y1="82" x2="82" y2="82" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 18 82 L 38 26 L 44 32 L 50 24 L 56 32 L 62 26 L 82 82" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M 44 22 Q 50 14 56 20 Q 60 12 50 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <rect x="28" y="70" width="14" height="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="26,70 44,70 35,62" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>`,
+};
+
+function demoBuildingLogoSvg(id) {
+  const body = DEMO_LOGO_BODIES[id];
+  if (!body) return demoPlaceholderLogoSvg();
+  return `<svg class="bf-logo" viewBox="0 0 100 100" width="90" height="90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${body}</svg>`;
 }
 
 // 8 栋功能说明（双语）— key 对齐 demo_cn.json 实际 building.id
@@ -379,7 +454,7 @@ function renderBuildings() {
           <div class="card-front">
             <div class="card-name">${b.emoji}${b.name}</div>
             <div class="card-npc">${b.npc_handle}</div>
-            <div class="bf-logo-wrap">${demoPlaceholderLogoSvg()}</div>
+            <div class="bf-logo-wrap">${demoBuildingLogoSvg(b.id)}</div>
             <div class="bf-spacer"></div>
             <div class="bf-est">${demoFunctionLabel(b.id)}</div>
           </div>

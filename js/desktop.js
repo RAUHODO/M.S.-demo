@@ -134,7 +134,7 @@ function renderDesktopBuildings() {
           ${descIcon}
           <div class="card-name">${b.emoji}${b.name}</div>
           <div class="card-npc">${b.npc_handle}</div>
-          <div class="bf-logo-wrap">${demoPlaceholderLogoSvg()}</div>
+          <div class="bf-logo-wrap">${demoBuildingLogoSvg(b.id)}</div>
           <div class="bf-spacer"></div>
           <div class="bf-est">${demoFunctionLabel(b.id)}</div>
         </div>
