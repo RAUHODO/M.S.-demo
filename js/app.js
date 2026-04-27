@@ -112,15 +112,25 @@ const DEMO_LOGO_BODIES = {
     <path d="M 24 82 L 24 50 Q 24 26 50 26 Q 76 26 76 50 L 76 82" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
     <path d="M 50 82 Q 38 54 50 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     <circle cx="50" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/>`,
-  // 魔法学院 — 双塔 + 飞拱
+  // 魔法学院 — v7 月光学派徽章风：新月 + 散星 + 多尖塔城堡剪影 + 玫瑰窗
   ruins: `
-    <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2"/>
-    <line x1="20" y1="82" x2="80" y2="82" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    <rect x="24" y="28" width="14" height="54" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-    <polygon points="22,28 40,28 31,18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-    <rect x="62" y="28" width="14" height="54" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-    <polygon points="60,28 78,28 69,18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-    <path d="M 38 42 Q 50 28 62 42" fill="none" stroke="currentColor" stroke-width="2"/>`,
+    <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M 24 20 A 7 7 0 1 0 24 34 A 5 7 0 0 1 24 20 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 14 14 L 14 18 M 12 16 L 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M 40 12 L 40 16 M 38 14 L 42 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="12" cy="42" r="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M 34 28 L 34 30 M 33 29 L 35 29" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+    <line x1="18" y1="82" x2="82" y2="82" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <rect x="22" y="48" width="56" height="34" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <polygon points="46,48 54,48 50,26" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <line x1="50" y1="26" x2="50" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <polygon points="30,48 38,48 34,34" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <polygon points="62,48 70,48 66,34" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <polygon points="22,48 28,48 25,40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <polygon points="72,48 78,48 75,40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <circle cx="50" cy="64" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="44" y1="64" x2="56" y2="64" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+    <line x1="50" y1="58" x2="50" y2="70" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>`,
   // 黄金树大教堂 — 树冠 + 树干嵌门
   library: `
     <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2"/>
