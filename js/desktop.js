@@ -127,13 +127,25 @@ function renderDesktopBuildings() {
     const descIcon = tipText
       ? `<span class="card-info tooltip-wrapper" onclick="event.stopPropagation()"><span class="info-icon">ⓘ</span><span class="tooltip-text">${tipText}</span></span>`
       : '';
-    return `<div class="building-card grade-${grade}${isActive ? ' active' : ''}" data-idx="${i}" onclick="selectDesktopBuilding(${i})">
-      ${descIcon}
-      <div class="card-name">${b.emoji} ${b.name}</div>
-      <div class="card-npc">${b.npc_handle}</div>
-      <div class="card-count">${b.today}</div>
-      <div class="card-sub">${lbl.today} · ${lbl.sevenD}${b.week}${b.history != null ? `<br>${lbl.historyTotal}${b.history}` : ''}</div>
-      <svg width="${svgW}" height="${SH}">${bars}</svg>
+    const flipClass = demoCardFlipClass(b.id);
+    return `<div class="building-card grade-${grade}${isActive ? ' active' : ''} ${flipClass}" data-idx="${i}" data-id="${b.id}" onclick="selectDesktopBuilding(${i}, '${b.id}')">
+      <div class="card-flip-container">
+        <div class="card-front">
+          ${descIcon}
+          <div class="bf-title">${b.emoji} ${b.name}</div>
+          <div class="bf-nick">${b.npc_handle}</div>
+          <div class="bf-logo-wrap">${demoPlaceholderLogoSvg()}</div>
+          <div class="bf-spacer"></div>
+          <div class="bf-est">${demoFunctionLabel(b.id)}</div>
+        </div>
+        <div class="card-back">
+          <div class="card-name">${b.emoji} ${b.name}</div>
+          <div class="card-npc">${b.npc_handle}</div>
+          <div class="card-count">${b.today}</div>
+          <div class="card-sub">${lbl.today} · ${lbl.sevenD}${b.week}${b.history != null ? `<br>${lbl.historyTotal}${b.history}` : ''}</div>
+          <svg width="${svgW}" height="${SH}">${bars}</svg>
+        </div>
+      </div>
     </div>`;
   }).join('');
   grid.innerHTML = cards;
@@ -142,7 +154,15 @@ function renderDesktopBuildings() {
   if (desktopActiveBuilding === null) desktopActiveBuilding = 0;
 }
 
-function selectDesktopBuilding(i) {
+function selectDesktopBuilding(i, id) {
+  // 翻面状态机
+  if (id) {
+    demoHandleFlip(id);
+    document.querySelectorAll('#buildings-grid .building-card').forEach(el => {
+      const cardId = el.dataset.id;
+      el.classList.toggle('flipped', demoGlobalFlipActive || demoFlippedBuildingId === cardId);
+    });
+  }
   desktopActiveBuilding = i;
   document.querySelectorAll('#buildings-grid .building-card').forEach(el => {
     el.classList.toggle('active', Number(el.dataset.idx) === i);

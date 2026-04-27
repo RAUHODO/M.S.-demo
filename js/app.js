@@ -8,6 +8,92 @@ let activeBuilding = -1;
 const openSections = new Set([0]); // 日记默认展开
 const openConvs = new Set();
 
+// ── 翻面机制（桌面 + 手机共用，参照 dashboard）────────
+// 全反触发：赐福点 (id="grace")，按 id 锁定不依赖 cell 位置（demo 按活跃度排序）
+let demoGlobalFlipActive = false;
+let demoFlippedBuildingId = null;
+const LS_DEMO_FLIP = 'mosphere.demo.flipState';
+const DEMO_GLOBAL_TRIGGER_ID = 'grace';
+
+function saveDemoFlipState() {
+  try {
+    localStorage.setItem(LS_DEMO_FLIP, JSON.stringify({
+      globalFlipActive: demoGlobalFlipActive,
+      flippedBuildingId: demoGlobalFlipActive ? null : demoFlippedBuildingId,
+    }));
+  } catch {}
+}
+function loadDemoFlipState() {
+  try {
+    const s = JSON.parse(localStorage.getItem(LS_DEMO_FLIP) || '{}');
+    demoGlobalFlipActive = !!s.globalFlipActive;
+    demoFlippedBuildingId = demoGlobalFlipActive ? null : (s.flippedBuildingId || null);
+  } catch {
+    demoGlobalFlipActive = false;
+    demoFlippedBuildingId = null;
+  }
+}
+function demoCardFlipClass(id) {
+  if (demoGlobalFlipActive) return 'flipped';
+  if (demoFlippedBuildingId === id) return 'flipped';
+  return '';
+}
+function demoHandleFlip(id) {
+  if (id === DEMO_GLOBAL_TRIGGER_ID) {
+    demoGlobalFlipActive = !demoGlobalFlipActive;
+    demoFlippedBuildingId = null;
+  } else {
+    if (demoGlobalFlipActive) {
+      demoGlobalFlipActive = false;
+      demoFlippedBuildingId = id;
+    } else if (demoFlippedBuildingId === id) {
+      demoFlippedBuildingId = null;
+    } else {
+      demoFlippedBuildingId = id;
+    }
+  }
+  saveDemoFlipState();
+}
+
+// ── Placeholder logo（金色版，沿用 demo --gold #C8AA6E）────
+function demoPlaceholderLogoSvg() {
+  return `<svg class="bf-logo" viewBox="0 0 100 100" width="90" height="90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2"/>
+    <rect x="40" y="44" width="20" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <polygon points="36,44 64,44 50,28" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <circle cx="50" cy="56" r="5.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="50" y1="56" x2="50" y2="52.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="50" y1="56" x2="53" y2="56" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>`;
+}
+
+// 8 栋功能说明（双语）
+const DEMO_FUNCTION_LABELS = {
+  cn: {
+    grace: '见证日常',
+    roundtable: '编年记录',
+    rose: '健康记录',
+    chamber: '日程任务',
+    academy: '灵感收集',
+    erdtree: '用户档案',
+    leyndell: '财务记录',
+    volcano: '人际关系',
+  },
+  en: {
+    grace: 'Witness daily',
+    roundtable: 'Chronicle',
+    rose: 'Health records',
+    chamber: 'Schedule tasks',
+    academy: 'Inspiration',
+    erdtree: 'Archive',
+    leyndell: 'Finance',
+    volcano: 'Relations',
+  },
+};
+function demoFunctionLabel(id) {
+  return (DEMO_FUNCTION_LABELS[currentLang] || DEMO_FUNCTION_LABELS.cn)[id] || '';
+}
+
 // ── 手机版界面状态持久化（活跃建筑 / 展开 section / 展开对话） ──
 const LS_MOBILE_STATE = 'mosphere.demo.mobile';
 function saveMobileUiState() {
@@ -144,6 +230,7 @@ async function init() {
   await loadData();
   // 恢复上次手机版状态（手机版默认所有 conv 折叠，桌面版在 renderDesktop 里另设默认）
   loadMobileUiState();
+  loadDemoFlipState();
   render();
   wireViewSwitch();
 }
@@ -282,14 +369,27 @@ function renderBuildings() {
       return `<rect x="${j*(BW+GAP)}" y="${SH-h}" width="${BW}" height="${h}" fill="currentColor" opacity="${op}" rx="1"/>`;
     }).join('');
 
+    const flipClass = demoCardFlipClass(b.id);
     return `
-      <div class="building-card grade-${grade} ${isActive ? 'active' : ''}"
-           onclick="toggleBuilding(${i})">
-        <div class="card-name">${b.emoji} ${b.name}</div>
-        <div class="card-npc">${b.npc_handle}</div>
-        <div class="card-count">${b.today}</div>
-        <div class="card-sub">${lbl.today} · ${lbl.sevenD}${b.week}${b.history != null ? `<br>${lbl.historyTotal}${b.history}` : ''}</div>
-        <svg width="${svgW}" height="${SH}">${bars}</svg>
+      <div class="building-card grade-${grade} ${isActive ? 'active' : ''} ${flipClass}"
+           data-id="${b.id}"
+           onclick="toggleBuilding(${i}, '${b.id}')">
+        <div class="card-flip-container">
+          <div class="card-front">
+            <div class="bf-title">${b.emoji} ${b.name}</div>
+            <div class="bf-nick">${b.npc_handle}</div>
+            <div class="bf-logo-wrap">${demoPlaceholderLogoSvg()}</div>
+            <div class="bf-spacer"></div>
+            <div class="bf-est">${demoFunctionLabel(b.id)}</div>
+          </div>
+          <div class="card-back">
+            <div class="card-name">${b.emoji} ${b.name}</div>
+            <div class="card-npc">${b.npc_handle}</div>
+            <div class="card-count">${b.today}</div>
+            <div class="card-sub">${lbl.today} · ${lbl.sevenD}${b.week}${b.history != null ? `<br>${lbl.historyTotal}${b.history}` : ''}</div>
+            <svg width="${svgW}" height="${SH}">${bars}</svg>
+          </div>
+        </div>
       </div>`;
   }).join('');
 
@@ -297,7 +397,9 @@ function renderBuildings() {
   renderBuildingDetail(sorted);
 }
 
-function toggleBuilding(idx) {
+function toggleBuilding(idx, id) {
+  // 翻面状态机
+  if (id) demoHandleFlip(id);
   activeBuilding = activeBuilding === idx ? -1 : idx;
   saveMobileUiState();
   renderBuildings();
