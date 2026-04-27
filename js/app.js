@@ -67,27 +67,27 @@ function demoPlaceholderLogoSvg() {
   </svg>`;
 }
 
-// 8 栋功能说明（双语）
+// 8 栋功能说明（双语）— key 对齐 demo_cn.json 实际 building.id
 const DEMO_FUNCTION_LABELS = {
   cn: {
     grace: '见证日常',
-    roundtable: '编年记录',
-    rose: '健康记录',
-    chamber: '日程任务',
-    academy: '灵感收集',
-    erdtree: '用户档案',
-    leyndell: '财务记录',
-    volcano: '人际关系',
+    roundtable: '交易记录',  // 圆桌厅堂 = 策略室对应（基甸的战略 + 资产交易）
+    perfumer: '健康记录',    // 蔷薇教堂 = 药房
+    clocktower: '日程任务',  // 大赐福·密室 = 时钟塔
+    ruins: '灵感收集',       // 魔法学院 = 杂货铺
+    library: '用户档案',     // 黄金树大教堂 = 档案室
+    merchant: '财务记录',    // 埃雷教堂 = 钱庄
+    manor: '人际关系',       // 火山官邸 = 茶馆
   },
   en: {
     grace: 'Witness daily',
-    roundtable: 'Chronicle',
-    rose: 'Health records',
-    chamber: 'Schedule tasks',
-    academy: 'Inspiration',
-    erdtree: 'Archive',
-    leyndell: 'Finance',
-    volcano: 'Relations',
+    roundtable: 'Trading',
+    perfumer: 'Health records',
+    clocktower: 'Schedule tasks',
+    ruins: 'Inspiration',
+    library: 'Profile',
+    merchant: 'Finance',
+    manor: 'Relations',
   },
 };
 function demoFunctionLabel(id) {
@@ -312,11 +312,12 @@ function render() {
   // Header
   const titleEl = document.getElementById('main-title');
   const titleText = meta.title || (currentLang === 'cn' ? 'MoSphere · 赐福点' : 'MoSphere · Site of Grace');
-  // 标题旁的 demo 说明 tooltip
+  // 标题旁的 demo 说明 tooltip — 仅桌面版显示，手机版省略保持简洁
   const demoTip = currentLang === 'cn'
     ? '本页面为 MoSphere 项目演示，所有数据均为虚构，采用《艾尔登法环》世界观包装。MoSphere 是一个个人 AI 操作系统项目。'
     : 'This page is a MoSphere project demo. All data is fictional, themed in the Elden Ring universe. MoSphere is a personal AI operating system.';
-  titleEl.innerHTML = `${titleText}${infoIcon(demoTip)}`;
+  const isDesktop = document.body.classList.contains('view-desktop');
+  titleEl.innerHTML = isDesktop ? `${titleText}${infoIcon(demoTip)}` : titleText;
   document.getElementById('header-subtitle').textContent = lbl.headerSubtitle;
 
   // lang-switch active state
@@ -376,8 +377,8 @@ function renderBuildings() {
            onclick="toggleBuilding(${i}, '${b.id}')">
         <div class="card-flip-container">
           <div class="card-front">
-            <div class="bf-title">${b.emoji} ${b.name}</div>
-            <div class="bf-nick">${b.npc_handle}</div>
+            <div class="card-name">${b.emoji} ${b.name}</div>
+            <div class="card-npc">${b.npc_handle}</div>
             <div class="bf-logo-wrap">${demoPlaceholderLogoSvg()}</div>
             <div class="bf-spacer"></div>
             <div class="bf-est">${demoFunctionLabel(b.id)}</div>

@@ -125,15 +125,15 @@ function renderDesktopBuildings() {
     const matchSec = sections.find(s => s.label === b.name);
     const tipText = (matchSec && matchSec.tooltip) || b.description || '';
     const descIcon = tipText
-      ? `<span class="card-info tooltip-wrapper" onclick="event.stopPropagation()"><span class="info-icon">ⓘ</span><span class="tooltip-text">${tipText}</span></span>`
+      ? `<span class="card-info" data-tip="${tipText.replace(/"/g, '&quot;')}" onclick="event.stopPropagation()"><span class="info-icon">ⓘ</span></span>`
       : '';
     const flipClass = demoCardFlipClass(b.id);
     return `<div class="building-card grade-${grade}${isActive ? ' active' : ''} ${flipClass}" data-idx="${i}" data-id="${b.id}" onclick="selectDesktopBuilding(${i}, '${b.id}')">
       <div class="card-flip-container">
         <div class="card-front">
           ${descIcon}
-          <div class="bf-title">${b.emoji} ${b.name}</div>
-          <div class="bf-nick">${b.npc_handle}</div>
+          <div class="card-name">${b.emoji} ${b.name}</div>
+          <div class="card-npc">${b.npc_handle}</div>
           <div class="bf-logo-wrap">${demoPlaceholderLogoSvg()}</div>
           <div class="bf-spacer"></div>
           <div class="bf-est">${demoFunctionLabel(b.id)}</div>
@@ -141,9 +141,11 @@ function renderDesktopBuildings() {
         <div class="card-back">
           <div class="card-name">${b.emoji} ${b.name}</div>
           <div class="card-npc">${b.npc_handle}</div>
-          <div class="card-count">${b.today}</div>
-          <div class="card-sub">${lbl.today} · ${lbl.sevenD}${b.week}${b.history != null ? `<br>${lbl.historyTotal}${b.history}` : ''}</div>
-          <svg width="${svgW}" height="${SH}">${bars}</svg>
+          <div class="card-back-stats">
+            <div class="card-count">${b.today}</div>
+            <div class="card-sub">${lbl.today} · ${lbl.sevenD}${b.week}${b.history != null ? `<br>${lbl.historyTotal}${b.history}` : ''}</div>
+            <svg width="${svgW}" height="${SH}">${bars}</svg>
+          </div>
         </div>
       </div>
     </div>`;
@@ -172,9 +174,9 @@ function selectDesktopBuilding(i, id) {
 }
 
 function selectNextDesktopBuilding() {
-  const total = (typeof getBuildings === 'function' ? getBuildings().length : 8);
-  const next = ((desktopActiveBuilding ?? 0) + 1) % total;
-  selectDesktopBuilding(next);
+  const sorted = getBuildings().sort((a, b) => b.today - a.today);
+  const next = ((desktopActiveBuilding ?? 0) + 1) % sorted.length;
+  selectDesktopBuilding(next, sorted[next]?.id);
 }
 
 function renderDesktopMidBarAndLog() {
@@ -245,6 +247,43 @@ function fitDashboardScale() {
 }
 window.addEventListener('resize', fitDashboardScale);
 fitDashboardScale();
+
+// ── Card-info tooltip portal（绕开 overflow:hidden 祖先）──
+(function wireCardInfoTooltip() {
+  let portal = null;
+  function getPortal() {
+    if (!portal) {
+      portal = document.createElement('div');
+      portal.id = 'card-tip-portal';
+      document.body.appendChild(portal);
+    }
+    return portal;
+  }
+  document.addEventListener('mouseover', e => {
+    const ci = e.target.closest('.card-info[data-tip]');
+    if (!ci) return;
+    const p = getPortal();
+    p.textContent = ci.dataset.tip;
+    const rect = ci.getBoundingClientRect();
+    p.style.display = 'block';
+    // 右下角图标 → tooltip 朝上、右对齐图标右边
+    const tipW = Math.min(240, window.innerWidth - 16);
+    p.style.width = tipW + 'px';
+    const tipH = p.offsetHeight;
+    let top = rect.top - tipH - 6;
+    let right = window.innerWidth - rect.right;
+    // 上方放不下时改朝下
+    if (top < 8) top = rect.bottom + 6;
+    p.style.top  = top + 'px';
+    p.style.right = right + 'px';
+    p.style.left  = 'auto';
+  });
+  document.addEventListener('mouseout', e => {
+    const ci = e.target.closest('.card-info[data-tip]');
+    if (!ci) return;
+    if (portal) portal.style.display = 'none';
+  });
+})();
 
 // 启动
 if (document.readyState === 'loading') {

@@ -833,9 +833,8 @@ footer {
   color: var(--gold);
 }
 
-/* 已落地正面 nick + est 金色调 */
-.card-front > .bf-nick { color: var(--gold-dim, var(--text-secondary)); }
-.bf-est { color: var(--gold); }
+/* est 用 text-primary 米黄白避免与金色背景同色低对比；nick 沿用反面 .card-npc 现有 color */
+.bf-est { color: var(--text-primary); }
 
 /* ── 手机版翻面 ── */
 body:not(.view-desktop) .building-card {
@@ -856,6 +855,8 @@ body:not(.view-desktop) .building-card > .card-flip-container {
 body:not(.view-desktop) .building-card.flipped > .card-flip-container {
   transform: rotateY(180deg);
 }
+/* row 1/2 用 auto，高度严格 = name/npc content min（正反面相同）→ 两面对齐
+   row 3 用 1fr 吃所有余空间差异（正面 logo 90 / 反面 count 35）；row 4/5 auto 让 sub+svg 紧贴 cell 底 */
 body:not(.view-desktop) .card-back,
 body:not(.view-desktop) .card-front {
   position: absolute;
@@ -863,7 +864,7 @@ body:not(.view-desktop) .card-front {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   display: grid;
-  grid-template-rows: 1fr 1fr 6fr 1fr 1fr;
+  grid-template-rows: auto auto 1fr auto auto;
   align-items: center;
   justify-items: center;
   padding: 8px 4px;
@@ -873,7 +874,16 @@ body:not(.view-desktop) .card-front {
 }
 body:not(.view-desktop) .card-back { transform: rotateY(180deg); }
 body:not(.view-desktop) .bf-logo-wrap { align-self: stretch; justify-self: stretch; }
+/* mobile 正面：name + npc 复用反面 .card-name / .card-npc 现有字号 + nowrap (style.css line 251/262)
+   只剩 logo 和 est 是新字段 */
 body:not(.view-desktop) .bf-logo { width: 90px; height: 90px; max-width: 60%; }
-body:not(.view-desktop) .bf-title { font-size: 1rem; font-weight: 700; line-height: 1.2; }
-body:not(.view-desktop) .bf-nick { font-size: .75rem; line-height: 1.3; }
-body:not(.view-desktop) .bf-est { font-size: .8rem; line-height: 1.3; }
+/* 正面 logo 上移 13px：补偿 name+nick（≈40px）比 est（≈15px）多出的高度差的一半，使 logo 视觉居中 */
+body:not(.view-desktop) .card-front .bf-logo { transform: translateY(-13px); }
+body:not(.view-desktop) .bf-est {
+  font-size: .8rem;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
