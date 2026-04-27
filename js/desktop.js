@@ -132,14 +132,14 @@ function renderDesktopBuildings() {
       <div class="card-flip-container">
         <div class="card-front">
           ${descIcon}
-          <div class="card-name">${b.emoji} ${b.name}</div>
+          <div class="card-name">${b.emoji}${b.name}</div>
           <div class="card-npc">${b.npc_handle}</div>
           <div class="bf-logo-wrap">${demoPlaceholderLogoSvg()}</div>
           <div class="bf-spacer"></div>
           <div class="bf-est">${demoFunctionLabel(b.id)}</div>
         </div>
         <div class="card-back">
-          <div class="card-name">${b.emoji} ${b.name}</div>
+          <div class="card-name">${b.emoji}${b.name}</div>
           <div class="card-npc">${b.npc_handle}</div>
           <div class="card-back-stats">
             <div class="card-count">${b.today}</div>
