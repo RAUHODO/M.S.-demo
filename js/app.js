@@ -124,15 +124,20 @@ const DEMO_LOGO_BODIES = {
     <line x1="46" y1="64" x2="46" y2="82" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     <line x1="54" y1="64" x2="54" y2="82" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     <path d="M 46 76 Q 46 70 50 70 Q 54 70 54 76" fill="none" stroke="currentColor" stroke-width="1.5"/>`,
-  // 埃雷教堂 — 简朴小教堂 + 顶部十字
+  // 埃雷教堂 — 墨鱼定稿（按真实图比例：高瘦钟楼左偏 + 主堂矮宽右侧 + 藤蔓）
   merchant: `
-    <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2"/>
-    <line x1="22" y1="82" x2="78" y2="82" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    <rect x="34" y="46" width="32" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-    <polygon points="32,46 68,46 50,30" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-    <line x1="50" y1="30" x2="50" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    <line x1="46" y1="22" x2="54" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M 44 82 Q 44 68 50 68 Q 56 68 56 82" fill="none" stroke="currentColor" stroke-width="1.5"/>`,
+    <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="2"/>
+    <rect x="28" y="22" width="14" height="58" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M 31 38 Q 31 33 35 33 Q 39 33 39 38 L 39 46 L 31 46 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 26 22 L 35 14 L 44 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="35" y1="14" x2="35" y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 42 80 L 42 56 L 76 56 L 76 80" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 42 56 L 59 46 L 76 56" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 55 80 L 55 70 Q 55 66 59 66 Q 63 66 63 70 L 63 80" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="69" y1="64" x2="69" y2="70" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="80" x2="80" y2="80" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 28 32 Q 25 38 28 44 Q 31 50 28 56" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 50 52 Q 52 58 49 64" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>`,
   // 火山官邸 — v2：火山主体（占主导）+ 山脚小宅 + 顶部喷烟
   manor: `
     <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2"/>
